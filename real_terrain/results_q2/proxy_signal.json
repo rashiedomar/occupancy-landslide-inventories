@@ -1,0 +1,3 @@
+{"note": "AUC on TRUE landslides, HistGradientBoosting, same 5 block splits as experiments (train+val -> test). Copied from run output; job was stopped by time limit before the synthetic-world rows.",
+ "Iburi (real)": {"terrain_only": 0.836, "terrain_plus_access": 0.885, "gain": 0.049, "gain_per_draw": [0.056, 0.024, 0.058, 0.038, 0.069]},
+ "Gorkha (real)": {"terrain_only": 0.854, "terrain_plus_access": 0.858, "gain": 0.004, "gain_per_draw": [0.006, 0.0, 0.005, 0.004, 0.004]}}

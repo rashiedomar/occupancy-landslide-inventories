@@ -1,0 +1,6 @@
+[A] draw 0: 217s {'n_cells': 56399, 'n_true': 8943, 'n_test': 14314, 'frac_recorded': 0.28558649222855864, 'per_inventory': [347, 1844, 675, 256]}
+[A] draw 1: 216s {'n_cells': 56399, 'n_true': 8943, 'n_test': 17717, 'frac_recorded': 0.3484289388348429, 'per_inventory': [314, 1857, 1516, 305]}
+[A] draw 2: 173s {'n_cells': 56399, 'n_true': 8943, 'n_test': 14749, 'frac_recorded': 0.34921167393492114, 'per_inventory': [315, 1795, 1592, 159]}
+[A] draw 3: 230s {'n_cells': 56399, 'n_true': 8943, 'n_test': 11110, 'frac_recorded': 0.2958738678295874, 'per_inventory': [328, 1790, 805, 211]}
+[A] draw 4: 211s {'n_cells': 56399, 'n_true': 8943, 'n_test': 20399, 'frac_recorded': 0.2801073465280107, 'per_inventory': [321, 1853, 621, 119]}
+finished

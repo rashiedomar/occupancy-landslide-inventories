@@ -1,0 +1,30 @@
+[scenario A] seed 0: 229s, recorded 30% of real landslides [352, 1795, 1024]
+[scenario A] seed 1: 221s, recorded 39% of real landslides [357, 1782, 2227]
+[scenario A] seed 2: 205s, recorded 38% of real landslides [336, 1799, 2006]
+[scenario A] seed 3: 258s, recorded 29% of real landslides [347, 1763, 857]
+[scenario A] seed 4: 205s, recorded 25% of real landslides [362, 1794, 356]
+[scenario B] seed 0: 273s, recorded 30% of real landslides [352, 1795, 1024]
+[scenario B] seed 1: 237s, recorded 39% of real landslides [357, 1782, 2227]
+[scenario B] seed 2: 221s, recorded 38% of real landslides [336, 1799, 2006]
+[scenario B] seed 3: 266s, recorded 29% of real landslides [347, 1763, 857]
+[scenario B] seed 4: 203s, recorded 25% of real landslides [362, 1794, 356]
+
+=== Scenario A: susceptibility sees terrain only  (5 seeds; test = random 3 km blocks; scored vs FULL real inventory) ===
+model                                          auc_true_landslides      auc_remote_quarter     mean_pred_over_true       remote_near_ratio
+Naive (terrain + access)                             0.752 ± 0.062           0.725 ± 0.093           0.339 ± 0.081           0.183 ± 0.122
+Naive (terrain only)                                 0.698 ± 0.046           0.647 ± 0.071           0.384 ± 0.147           0.418 ± 0.206
+Oracle (trained on full real inventory)              0.820 ± 0.039           0.770 ± 0.048           1.069 ± 0.133           0.807 ± 0.264
+Occupancy, 1 merged inventory                        0.742 ± 0.014           0.630 ± 0.033           2.004 ± 0.511           0.638 ± 0.145
+Occupancy, 2 road-biased inventories                 0.756 ± 0.018           0.605 ± 0.028           1.380 ± 0.504           0.757 ± 0.129
+Occupancy, 3 inventories (OURS)                      0.748 ± 0.019           0.572 ± 0.095           1.769 ± 0.559           0.962 ± 0.600
+landslides recorded by any inventory: 32%.  detection-head corr. with truth: news=0.74, agency=0.66, satellite=0.58
+
+=== Scenario B: susceptibility also sees road distance  (5 seeds; test = random 3 km blocks; scored vs FULL real inventory) ===
+model                                          auc_true_landslides      auc_remote_quarter     mean_pred_over_true       remote_near_ratio
+Naive (terrain + access)                             0.752 ± 0.062           0.725 ± 0.093           0.339 ± 0.081           0.183 ± 0.122
+Naive (terrain only)                                 0.698 ± 0.046           0.647 ± 0.071           0.384 ± 0.147           0.418 ± 0.206
+Oracle (trained on full real inventory)              0.817 ± 0.030           0.748 ± 0.071           0.998 ± 0.168           0.849 ± 0.284
+Occupancy, 1 merged inventory                        0.709 ± 0.043           0.643 ± 0.066           1.804 ± 0.435           0.347 ± 0.156
+Occupancy, 2 road-biased inventories                 0.721 ± 0.035           0.642 ± 0.081           1.016 ± 0.373           0.241 ± 0.090
+Occupancy, 3 inventories (OURS)                      0.737 ± 0.041           0.591 ± 0.101           1.780 ± 0.629           1.205 ± 1.417
+landslides recorded by any inventory: 32%.  detection-head corr. with truth: news=0.77, agency=0.62, satellite=0.59

@@ -1,0 +1,357 @@
+{
+ "0": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.6808185111814586,
+   "auc_remote_quarter": 0.7252591241031137,
+   "mean_pred_over_true": 0.27326714240354294,
+   "remote_near_ratio": 0.06298339540526028,
+   "abs_log_ratio": 2.7648841523258305,
+   "near_road_lift_ratio": 1.4521965695064478
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7420862935702477,
+   "auc_remote_quarter": 0.6934424695579685,
+   "mean_pred_over_true": 0.3479462552930239,
+   "remote_near_ratio": 0.5354156451399994,
+   "abs_log_ratio": 0.6247119269182656,
+   "near_road_lift_ratio": 0.9765027797465734
+  },
+  "OURS: terrain-only susceptibility": {
+   "auc_true_landslides": 0.8256898011807244,
+   "auc_remote_quarter": 0.8114176225655945,
+   "mean_pred_over_true": 1.1093591523596067,
+   "remote_near_ratio": 0.9316713449505,
+   "abs_log_ratio": 0.0707751606598799,
+   "near_road_lift_ratio": 0.9332175156392023
+  },
+  "OURS: + short-range road term": {
+   "auc_true_landslides": 0.8244089567393373,
+   "auc_remote_quarter": 0.8079419357857084,
+   "mean_pred_over_true": 1.0655123952548382,
+   "remote_near_ratio": 0.7911313900282556,
+   "abs_log_ratio": 0.23429121877818393,
+   "near_road_lift_ratio": 1.014823071655166
+  },
+  "OURS: roads enter susceptibility freely": {
+   "auc_true_landslides": 0.6956996946699038,
+   "auc_remote_quarter": 0.7206155180993454,
+   "mean_pred_over_true": 0.7400334627963747,
+   "remote_near_ratio": 0.05856409179715034,
+   "abs_log_ratio": 2.8376335381849085,
+   "near_road_lift_ratio": 1.2886490261745456
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8350971105440834,
+   "auc_remote_quarter": 0.834451065205279,
+   "mean_pred_over_true": 0.8386673103713786,
+   "remote_near_ratio": 1.037043157611513,
+   "abs_log_ratio": 0.036373546135988505,
+   "near_road_lift_ratio": 0.8455650067427032
+  },
+  "_learned_roadcut": {
+   "OURS: + short-range road term": [
+    [
+     0.3516051173210144,
+     0.18057483434677124
+    ],
+    [
+     0.3564351201057434,
+     0.18092826008796692
+    ],
+    [
+     0.48096469044685364,
+     0.19372253119945526
+    ]
+   ]
+  },
+  "_info": {
+   "n_added": 912,
+   "n_true": 10096,
+   "frac_recorded": 0.3287440570522979
+  }
+ },
+ "1": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.7310306474208692,
+   "auc_remote_quarter": 0.7824539594143881,
+   "mean_pred_over_true": 0.39045339685879116,
+   "remote_near_ratio": 0.1797450254633407,
+   "abs_log_ratio": 1.7162159575158633,
+   "near_road_lift_ratio": 1.442434185530474
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7409615459324805,
+   "auc_remote_quarter": 0.737511918509683,
+   "mean_pred_over_true": 0.32852419776970004,
+   "remote_near_ratio": 0.6705288747015378,
+   "abs_log_ratio": 0.3996885127558262,
+   "near_road_lift_ratio": 0.8636249281500608
+  },
+  "OURS: terrain-only susceptibility": {
+   "auc_true_landslides": 0.7653815576347204,
+   "auc_remote_quarter": 0.7571535987251469,
+   "mean_pred_over_true": 1.5762220523802128,
+   "remote_near_ratio": 0.738463215885152,
+   "abs_log_ratio": 0.3031839874791828,
+   "near_road_lift_ratio": 1.0041796957261946
+  },
+  "OURS: + short-range road term": {
+   "auc_true_landslides": 0.7644041213132196,
+   "auc_remote_quarter": 0.7507860993139497,
+   "mean_pred_over_true": 1.5404321618534906,
+   "remote_near_ratio": 0.6927357302186212,
+   "abs_log_ratio": 0.36710669419733233,
+   "near_road_lift_ratio": 1.0473706347061298
+  },
+  "OURS: roads enter susceptibility freely": {
+   "auc_true_landslides": 0.7462909707229938,
+   "auc_remote_quarter": 0.7540329435205093,
+   "mean_pred_over_true": 1.4700379914605435,
+   "remote_near_ratio": 0.42689106391906073,
+   "abs_log_ratio": 0.8512264179295531,
+   "near_road_lift_ratio": 1.0667940937392555
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.775066449456393,
+   "auc_remote_quarter": 0.7821681051184064,
+   "mean_pred_over_true": 0.9349699749643974,
+   "remote_near_ratio": 0.7317572361646064,
+   "abs_log_ratio": 0.31230646461092354,
+   "near_road_lift_ratio": 0.964682273014433
+  },
+  "_learned_roadcut": {
+   "OURS: + short-range road term": [
+    [
+     0.3089020848274231,
+     0.1733710914850235
+    ],
+    [
+     0.298866331577301,
+     0.1712038815021515
+    ],
+    [
+     0.3087042272090912,
+     0.17319227755069733
+    ]
+   ]
+  },
+  "_info": {
+   "n_added": 848,
+   "n_true": 10032,
+   "frac_recorded": 0.4115829346092504
+  }
+ },
+ "2": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.6774461933999343,
+   "auc_remote_quarter": 0.5891102694051747,
+   "mean_pred_over_true": 0.5057247011168875,
+   "remote_near_ratio": 0.3209354131444397,
+   "abs_log_ratio": 1.1365153812541033,
+   "near_road_lift_ratio": 1.3887273117671062
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7461821495110337,
+   "auc_remote_quarter": 0.6110365430781542,
+   "mean_pred_over_true": 0.28670163278957894,
+   "remote_near_ratio": 1.1474368133570068,
+   "abs_log_ratio": 0.13753059682382146,
+   "near_road_lift_ratio": 0.814605177807728
+  },
+  "OURS: terrain-only susceptibility": {
+   "auc_true_landslides": 0.7617187141120765,
+   "auc_remote_quarter": 0.687165644171779,
+   "mean_pred_over_true": 1.271012660579455,
+   "remote_near_ratio": 0.81650277355593,
+   "abs_log_ratio": 0.20272496969321024,
+   "near_road_lift_ratio": 0.8930532643831018
+  },
+  "OURS: + short-range road term": {
+   "auc_true_landslides": 0.7599125416592054,
+   "auc_remote_quarter": 0.6910105094691917,
+   "mean_pred_over_true": 1.2616742275151382,
+   "remote_near_ratio": 0.7085552838554451,
+   "abs_log_ratio": 0.34452719345948485,
+   "near_road_lift_ratio": 0.9731828643773551
+  },
+  "OURS: roads enter susceptibility freely": {
+   "auc_true_landslides": 0.6592833883309255,
+   "auc_remote_quarter": 0.5442799679914644,
+   "mean_pred_over_true": 1.2530760250266335,
+   "remote_near_ratio": 0.2951637635998662,
+   "abs_log_ratio": 1.2202249458234407,
+   "near_road_lift_ratio": 1.2761087661908348
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8135414599858064,
+   "auc_remote_quarter": 0.7607605228060816,
+   "mean_pred_over_true": 1.1939633261868186,
+   "remote_near_ratio": 1.1167277233372113,
+   "abs_log_ratio": 0.11040273328951213,
+   "near_road_lift_ratio": 0.823193963599727
+  },
+  "_learned_roadcut": {
+   "OURS: + short-range road term": [
+    [
+     0.48068368434906006,
+     0.19151407480239868
+    ],
+    [
+     0.41215595602989197,
+     0.18694978952407837
+    ],
+    [
+     0.39361372590065,
+     0.1840847283601761
+    ]
+   ]
+  },
+  "_info": {
+   "n_added": 845,
+   "n_true": 10029,
+   "frac_recorded": 0.39505434240701964
+  }
+ },
+ "3": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.8415404053180923,
+   "auc_remote_quarter": 0.8654698905460393,
+   "mean_pred_over_true": 0.44871519104108604,
+   "remote_near_ratio": 0.43088862204188294,
+   "abs_log_ratio": 0.8419056398101887,
+   "near_road_lift_ratio": 1.6131492874284403
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7051152511380407,
+   "auc_remote_quarter": 0.38564830127145044,
+   "mean_pred_over_true": 0.19019248873119848,
+   "remote_near_ratio": 2.152884995659916,
+   "abs_log_ratio": 0.7668088010985655,
+   "near_road_lift_ratio": 1.0562945166539464
+  },
+  "OURS: terrain-only susceptibility": {
+   "auc_true_landslides": 0.7948342156512043,
+   "auc_remote_quarter": 0.7775432854648525,
+   "mean_pred_over_true": 1.1879097624083976,
+   "remote_near_ratio": 1.3822297620667554,
+   "abs_log_ratio": 0.3236979648313831,
+   "near_road_lift_ratio": 0.8862169612492634
+  },
+  "OURS: + short-range road term": {
+   "auc_true_landslides": 0.7957670878147037,
+   "auc_remote_quarter": 0.7801882946565238,
+   "mean_pred_over_true": 1.1662503187866937,
+   "remote_near_ratio": 1.230315085801403,
+   "abs_log_ratio": 0.20727030389729473,
+   "near_road_lift_ratio": 0.9705706329147279
+  },
+  "OURS: roads enter susceptibility freely": {
+   "auc_true_landslides": 0.8159705058077141,
+   "auc_remote_quarter": 0.8222873031867024,
+   "mean_pred_over_true": 1.0968177922976898,
+   "remote_near_ratio": 0.58207149753962,
+   "abs_log_ratio": 0.5411619907896777,
+   "near_road_lift_ratio": 1.3062576989619101
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8380637646900486,
+   "auc_remote_quarter": 0.8119793629671792,
+   "mean_pred_over_true": 0.9343423317397692,
+   "remote_near_ratio": 1.0367244813639556,
+   "abs_log_ratio": 0.03606620577241409,
+   "near_road_lift_ratio": 0.860241623936766
+  },
+  "_learned_roadcut": {
+   "OURS: + short-range road term": [
+    [
+     0.5761920213699341,
+     0.18606586754322052
+    ],
+    [
+     0.5647399425506592,
+     0.18663856387138367
+    ],
+    [
+     0.6276507377624512,
+     0.18709154427051544
+    ]
+   ]
+  },
+  "_info": {
+   "n_added": 886,
+   "n_true": 10070,
+   "frac_recorded": 0.3198609731876862
+  }
+ },
+ "4": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.6354120753999769,
+   "auc_remote_quarter": 0.6245914318462182,
+   "mean_pred_over_true": 0.34652787982028566,
+   "remote_near_ratio": 0.06774137387430891,
+   "abs_log_ratio": 2.692058150217003,
+   "near_road_lift_ratio": 1.5231357954842581
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7065015202273438,
+   "auc_remote_quarter": 0.5799403356936794,
+   "mean_pred_over_true": 0.41129665374489605,
+   "remote_near_ratio": 0.7951140934455332,
+   "abs_log_ratio": 0.2292696608569545,
+   "near_road_lift_ratio": 0.6896416681469512
+  },
+  "OURS: terrain-only susceptibility": {
+   "auc_true_landslides": 0.687280080109496,
+   "auc_remote_quarter": 0.6057863692436207,
+   "mean_pred_over_true": 0.9792732856302405,
+   "remote_near_ratio": 0.549158691198614,
+   "abs_log_ratio": 0.5993678242343732,
+   "near_road_lift_ratio": 0.9889863875356849
+  },
+  "OURS: + short-range road term": {
+   "auc_true_landslides": 0.7285247638224163,
+   "auc_remote_quarter": 0.6561790722447248,
+   "mean_pred_over_true": 0.9132355687481934,
+   "remote_near_ratio": 0.48952280571352796,
+   "abs_log_ratio": 0.7143242282837119,
+   "near_road_lift_ratio": 1.0720248860366768
+  },
+  "OURS: roads enter susceptibility freely": {
+   "auc_true_landslides": 0.6204213839592765,
+   "auc_remote_quarter": 0.5492783986232933,
+   "mean_pred_over_true": 0.8253311085525262,
+   "remote_near_ratio": 0.07949734344466247,
+   "abs_log_ratio": 2.53203167367058,
+   "near_road_lift_ratio": 1.398842338318635
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.7741651017258975,
+   "auc_remote_quarter": 0.6913999135511069,
+   "mean_pred_over_true": 1.1662817992993306,
+   "remote_near_ratio": 0.8134661282830392,
+   "abs_log_ratio": 0.20645099021135319,
+   "near_road_lift_ratio": 0.8302031213150242
+  },
+  "_learned_roadcut": {
+   "OURS: + short-range road term": [
+    [
+     0.47939470410346985,
+     0.1973227709531784
+    ],
+    [
+     0.5732815861701965,
+     0.20633618533611298
+    ],
+    [
+     0.3018327057361603,
+     0.17196711897850037
+    ]
+   ]
+  },
+  "_info": {
+   "n_added": 869,
+   "n_true": 10053,
+   "frac_recorded": 0.2827016810902218
+  }
+ }
+}

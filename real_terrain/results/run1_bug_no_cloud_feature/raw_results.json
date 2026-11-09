@@ -1,0 +1,546 @@
+{
+ "A": [
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.7414368447124535,
+    "auc_remote_quarter": 0.7425911984994833,
+    "mean_pred_over_true": 0.2055504953258175,
+    "remote_near_ratio": 0.10644169662409976
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.7401302839059298,
+    "auc_remote_quarter": 0.6950182673454719,
+    "mean_pred_over_true": 0.23823142880199075,
+    "remote_near_ratio": 0.3330080773812114
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.845014613952424,
+    "auc_remote_quarter": 0.833887946103888,
+    "mean_pred_over_true": 0.9197689973457165,
+    "remote_near_ratio": 1.2256177794651422
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.7470604210222486,
+    "auc_remote_quarter": 0.6281072563255203,
+    "mean_pred_over_true": 1.7527770457751115,
+    "remote_near_ratio": 0.6495246551979704
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7379988116412355,
+    "auc_remote_quarter": 0.4569732773616764,
+    "mean_pred_over_true": 1.1093002644083947,
+    "remote_near_ratio": 1.3134840480484393
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.797014394873155,
+    "auc_remote_quarter": 0.6852749033468158,
+    "mean_pred_over_true": 1.1500843513641017,
+    "remote_near_ratio": 1.0585837445103872
+   },
+   "_detection_recovery": {
+    "news": 0.8193337785377455,
+    "agency": 0.7815629348730697,
+    "satellite": 0.44882234819975925
+   },
+   "_info": {
+    "frac_recorded": 0.3042247386759582,
+    "n_recorded": 2794,
+    "n_true": 9184,
+    "per_inventory": [
+     352,
+     1795,
+     1024
+    ],
+    "n_test": 14314
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.6810792689544509,
+    "auc_remote_quarter": 0.6591412933918998,
+    "mean_pred_over_true": 0.3417207899109877,
+    "remote_near_ratio": 0.09558388216952664
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.7019063964518484,
+    "auc_remote_quarter": 0.707380335611071,
+    "mean_pred_over_true": 0.3762030243813585,
+    "remote_near_ratio": 0.2768400230309281
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.7766378104382566,
+    "auc_remote_quarter": 0.769241845551996,
+    "mean_pred_over_true": 0.9686485295365143,
+    "remote_near_ratio": 0.5319752667857901
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.7152292411206622,
+    "auc_remote_quarter": 0.707418115736444,
+    "mean_pred_over_true": 1.7523921160800602,
+    "remote_near_ratio": 0.343444041431589
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7619774664760849,
+    "auc_remote_quarter": 0.7092669657712064,
+    "mean_pred_over_true": 0.9090211120661454,
+    "remote_near_ratio": 0.5702093165987491
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.7683506515176278,
+    "auc_remote_quarter": 0.6962967398365523,
+    "mean_pred_over_true": 1.2930216969324384,
+    "remote_near_ratio": 0.6102942071201405
+   },
+   "_detection_recovery": {
+    "news": 0.9051064085196059,
+    "agency": 0.8593651760416308,
+    "satellite": 0.006772730813737411
+   },
+   "_info": {
+    "frac_recorded": 0.39198606271777003,
+    "n_recorded": 3600,
+    "n_true": 9184,
+    "per_inventory": [
+     357,
+     1782,
+     2227
+    ],
+    "n_test": 17717
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.6893441203634205,
+    "auc_remote_quarter": 0.5882467470225972,
+    "mean_pred_over_true": 0.4947648108099046,
+    "remote_near_ratio": 0.23837485869287547
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.68950004360914,
+    "auc_remote_quarter": 0.55959683962248,
+    "mean_pred_over_true": 0.6636566797185642,
+    "remote_near_ratio": 0.4165767898436694
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.8430779038430347,
+    "auc_remote_quarter": 0.7653551487931206,
+    "mean_pred_over_true": 1.2645787186453035,
+    "remote_near_ratio": 0.7801949246300655
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.6945151175609161,
+    "auc_remote_quarter": 0.551266059489862,
+    "mean_pred_over_true": 2.2700819934262393,
+    "remote_near_ratio": 0.40943384629985624
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7649544837601208,
+    "auc_remote_quarter": 0.6081736941020207,
+    "mean_pred_over_true": 1.1641389497528516,
+    "remote_near_ratio": 0.5611298152089448
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.7156003652928293,
+    "auc_remote_quarter": 0.5560819808501388,
+    "mean_pred_over_true": 1.2566681835317213,
+    "remote_near_ratio": 0.5002620263332993
+   },
+   "_detection_recovery": {
+    "news": 0.9533410006497164,
+    "agency": 0.8038557283824036,
+    "satellite": 0.6634826148393413
+   },
+   "_info": {
+    "frac_recorded": 0.3753266550522648,
+    "n_recorded": 3447,
+    "n_true": 9184,
+    "per_inventory": [
+     336,
+     1799,
+     2006
+    ],
+    "n_test": 14749
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.7716800414007388,
+    "auc_remote_quarter": 0.7896905214254398,
+    "mean_pred_over_true": 0.3523875474387411,
+    "remote_near_ratio": 0.46199601694793035
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.7435782419702471,
+    "auc_remote_quarter": 0.7102239075756294,
+    "mean_pred_over_true": 0.3327576772690135,
+    "remote_near_ratio": 0.814851509346196
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.8635045606794056,
+    "auc_remote_quarter": 0.7931306678768392,
+    "mean_pred_over_true": 1.0041787753943021,
+    "remote_near_ratio": 0.9630461101319954
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.7616131216514185,
+    "auc_remote_quarter": 0.6807672930335593,
+    "mean_pred_over_true": 1.482912690374411,
+    "remote_near_ratio": 0.6849358716481148
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7470748421358969,
+    "auc_remote_quarter": 0.4873470298210124,
+    "mean_pred_over_true": 0.836575827817109,
+    "remote_near_ratio": 1.4509749904706855
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.7001482478492789,
+    "auc_remote_quarter": 0.3456020352437139,
+    "mean_pred_over_true": 2.2996489142519523,
+    "remote_near_ratio": 2.3909108123838387
+   },
+   "_detection_recovery": {
+    "news": 0.9239578062115681,
+    "agency": 0.7897575146716294,
+    "satellite": 0.09740685317827613
+   },
+   "_info": {
+    "frac_recorded": 0.2895252613240418,
+    "n_recorded": 2659,
+    "n_true": 9184,
+    "per_inventory": [
+     347,
+     1763,
+     857
+    ],
+    "n_test": 11110
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.6684745295749428,
+    "auc_remote_quarter": 0.601722542763062,
+    "mean_pred_over_true": 0.22823213870687112,
+    "remote_near_ratio": 0.04027540642652078
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.6168081837494679,
+    "auc_remote_quarter": 0.5613053580505937,
+    "mean_pred_over_true": 0.3086869004642316,
+    "remote_near_ratio": 0.2511281823496674
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.7696484918805445,
+    "auc_remote_quarter": 0.6865950387401127,
+    "mean_pred_over_true": 1.18821449273169,
+    "remote_near_ratio": 0.5363057745489568
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.7068377282094975,
+    "auc_remote_quarter": 0.5850764765114795,
+    "mean_pred_over_true": 1.8250104689574385,
+    "remote_near_ratio": 0.49452851855415036
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7406295403651582,
+    "auc_remote_quarter": 0.5926401475782977,
+    "mean_pred_over_true": 1.414129675185151,
+    "remote_near_ratio": 0.6301054785826399
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.7134620884477765,
+    "auc_remote_quarter": 0.5919794368194577,
+    "mean_pred_over_true": 1.1279162708904429,
+    "remote_near_ratio": 0.5315488279668726
+   },
+   "_detection_recovery": {
+    "news": 0.7927579830879065,
+    "agency": 0.7767631785310171,
+    "satellite": 0.2617916666756251
+   },
+   "_info": {
+    "frac_recorded": 0.2498911149825784,
+    "n_recorded": 2295,
+    "n_true": 9184,
+    "per_inventory": [
+     362,
+     1794,
+     356
+    ],
+    "n_test": 20399
+   }
+  }
+ ],
+ "B": [
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.7414368447124535,
+    "auc_remote_quarter": 0.7425911984994833,
+    "mean_pred_over_true": 0.2055504953258175,
+    "remote_near_ratio": 0.10644169662409976
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.7401302839059298,
+    "auc_remote_quarter": 0.6950182673454719,
+    "mean_pred_over_true": 0.23823142880199075,
+    "remote_near_ratio": 0.3330080773812114
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.8474157747475063,
+    "auc_remote_quarter": 0.7853559261480356,
+    "mean_pred_over_true": 0.7792417810283652,
+    "remote_near_ratio": 0.9229267367784837
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.6556685785720973,
+    "auc_remote_quarter": 0.6984605667768238,
+    "mean_pred_over_true": 0.9070248103155362,
+    "remote_near_ratio": 0.05133165492361006
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7465292350558035,
+    "auc_remote_quarter": 0.6560605480628957,
+    "mean_pred_over_true": 0.4554047726700047,
+    "remote_near_ratio": 0.25356311274954235
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.7901804706108736,
+    "auc_remote_quarter": 0.7274745979695387,
+    "mean_pred_over_true": 1.102211477895442,
+    "remote_near_ratio": 0.5415859602929721
+   },
+   "_detection_recovery": {
+    "news": 0.7614731306541934,
+    "agency": 0.7407324273494261,
+    "satellite": 0.2705521803919965
+   },
+   "_info": {
+    "frac_recorded": 0.3042247386759582,
+    "n_recorded": 2794,
+    "n_true": 9184,
+    "per_inventory": [
+     352,
+     1795,
+     1024
+    ],
+    "n_test": 14314
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.6810792689544509,
+    "auc_remote_quarter": 0.6591412933918998,
+    "mean_pred_over_true": 0.3417207899109877,
+    "remote_near_ratio": 0.09558388216952664
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.7019063964518484,
+    "auc_remote_quarter": 0.707380335611071,
+    "mean_pred_over_true": 0.3762030243813585,
+    "remote_near_ratio": 0.2768400230309281
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.8008450605993198,
+    "auc_remote_quarter": 0.7868578388532711,
+    "mean_pred_over_true": 0.9292318843895987,
+    "remote_near_ratio": 0.5991056620861719
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.6556409648202973,
+    "auc_remote_quarter": 0.707989094612364,
+    "mean_pred_over_true": 1.0408387037901186,
+    "remote_near_ratio": 0.1011011894317599
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7409731866836039,
+    "auc_remote_quarter": 0.7158019770173281,
+    "mean_pred_over_true": 0.8310248154634436,
+    "remote_near_ratio": 0.33017511602525157
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.7645590728444764,
+    "auc_remote_quarter": 0.7142946925814565,
+    "mean_pred_over_true": 1.392090458796813,
+    "remote_near_ratio": 0.5518144719796599
+   },
+   "_detection_recovery": {
+    "news": 0.9294665467383386,
+    "agency": 0.8698390615201012,
+    "satellite": 0.032925692654425576
+   },
+   "_info": {
+    "frac_recorded": 0.39198606271777003,
+    "n_recorded": 3600,
+    "n_true": 9184,
+    "per_inventory": [
+     357,
+     1782,
+     2227
+    ],
+    "n_test": 17717
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.6893441203634205,
+    "auc_remote_quarter": 0.5882467470225972,
+    "mean_pred_over_true": 0.4947648108099046,
+    "remote_near_ratio": 0.23837485869287547
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.68950004360914,
+    "auc_remote_quarter": 0.55959683962248,
+    "mean_pred_over_true": 0.6636566797185642,
+    "remote_near_ratio": 0.4165767898436694
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.7682524592537955,
+    "auc_remote_quarter": 0.6076751780964477,
+    "mean_pred_over_true": 1.280241491467883,
+    "remote_near_ratio": 0.7693891429116279
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.6254450737853848,
+    "auc_remote_quarter": 0.5268193052783645,
+    "mean_pred_over_true": 1.4738880858511108,
+    "remote_near_ratio": 0.1646189646088039
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7554426857964207,
+    "auc_remote_quarter": 0.6183823604925424,
+    "mean_pred_over_true": 1.5958146583834454,
+    "remote_near_ratio": 0.6336927493401452
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.7175113964304868,
+    "auc_remote_quarter": 0.5055902258341691,
+    "mean_pred_over_true": 1.1349259190978367,
+    "remote_near_ratio": 0.4921680711941681
+   },
+   "_detection_recovery": {
+    "news": 0.9250325313071527,
+    "agency": 0.8064875793314671,
+    "satellite": 0.6326826703785439
+   },
+   "_info": {
+    "frac_recorded": 0.3753266550522648,
+    "n_recorded": 3447,
+    "n_true": 9184,
+    "per_inventory": [
+     336,
+     1799,
+     2006
+    ],
+    "n_test": 14749
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.7716800414007388,
+    "auc_remote_quarter": 0.7896905214254398,
+    "mean_pred_over_true": 0.3523875474387411,
+    "remote_near_ratio": 0.46199601694793035
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.7435782419702471,
+    "auc_remote_quarter": 0.7102239075756294,
+    "mean_pred_over_true": 0.3327576772690135,
+    "remote_near_ratio": 0.814851509346196
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.8462619748127579,
+    "auc_remote_quarter": 0.7952910952318685,
+    "mean_pred_over_true": 0.9354154621623826,
+    "remote_near_ratio": 1.3610065742911945
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.7598584095836698,
+    "auc_remote_quarter": 0.7581032851571814,
+    "mean_pred_over_true": 1.3305039231466347,
+    "remote_near_ratio": 0.4336211266348214
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.7851155629284955,
+    "auc_remote_quarter": 0.7469492496673307,
+    "mean_pred_over_true": 0.5406526267567981,
+    "remote_near_ratio": 0.4291170373269952
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.6905690871036436,
+    "auc_remote_quarter": 0.3571594081948173,
+    "mean_pred_over_true": 2.222052075900754,
+    "remote_near_ratio": 4.768852825793029
+   },
+   "_detection_recovery": {
+    "news": 0.8798897359243004,
+    "agency": 0.8341860692850386,
+    "satellite": 0.21683863846494436
+   },
+   "_info": {
+    "frac_recorded": 0.2895252613240418,
+    "n_recorded": 2659,
+    "n_true": 9184,
+    "per_inventory": [
+     347,
+     1763,
+     857
+    ],
+    "n_test": 11110
+   }
+  },
+  {
+   "Naive (terrain + access)": {
+    "auc_true_landslides": 0.6684745295749428,
+    "auc_remote_quarter": 0.601722542763062,
+    "mean_pred_over_true": 0.22823213870687112,
+    "remote_near_ratio": 0.04027540642652078
+   },
+   "Naive (terrain only)": {
+    "auc_true_landslides": 0.6168081837494679,
+    "auc_remote_quarter": 0.5613053580505937,
+    "mean_pred_over_true": 0.3086869004642316,
+    "remote_near_ratio": 0.2511281823496674
+   },
+   "Oracle (trained on full real inventory)": {
+    "auc_true_landslides": 0.8238550497067458,
+    "auc_remote_quarter": 0.765943668994635,
+    "mean_pred_over_true": 1.0674863090976885,
+    "remote_near_ratio": 0.5902838223784862
+   },
+   "Occupancy, 1 merged inventory": {
+    "auc_true_landslides": 0.6433968442571275,
+    "auc_remote_quarter": 0.5065730096518408,
+    "mean_pred_over_true": 0.5891957029902714,
+    "remote_near_ratio": 0.15008155014826452
+   },
+   "Occupancy, 2 road-biased inventories": {
+    "auc_true_landslides": 0.712103241167078,
+    "auc_remote_quarter": 0.5589218414585579,
+    "mean_pred_over_true": 0.8309203846549221,
+    "remote_near_ratio": 0.32414668168936855
+   },
+   "Occupancy, 3 inventories (OURS)": {
+    "auc_true_landslides": 0.6859808202927499,
+    "auc_remote_quarter": 0.5525674835601403,
+    "mean_pred_over_true": 0.9209973247014505,
+    "remote_near_ratio": 0.2970188193507866
+   },
+   "_detection_recovery": {
+    "news": 0.8228991676593023,
+    "agency": 0.7207647998394305,
+    "satellite": 0.30505343149387876
+   },
+   "_info": {
+    "frac_recorded": 0.2498911149825784,
+    "n_recorded": 2295,
+    "n_true": 9184,
+    "per_inventory": [
+     362,
+     1794,
+     356
+    ],
+    "n_test": 20399
+   }
+  }
+ ]
+}

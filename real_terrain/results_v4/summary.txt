@@ -1,0 +1,24 @@
+
+=== Scenario B  (draws [0, 1, 2, 3, 4]; same data as Stage 3) ===
+model                                                    AUC        AUC remote ¼          |log bias| bias ratio (median)         rate ÷ true
+Standard (terrain + access)                     0.754 ± 0.069        0.718 ± 0.103        1.761 ± 0.708                0.16        0.370 ± 0.072
+Occupancy + anchor                              0.748 ± 0.033        0.652 ± 0.073        0.823 ± 0.316                0.50        1.467 ± 0.239
+Occupancy + monotone + anchor (FULL)            0.730 ± 0.065        0.679 ± 0.106        1.598 ± 0.899                0.33        1.100 ± 0.355
+Oracle (full real inventory)                    0.820 ± 0.031        0.752 ± 0.068        0.352 ± 0.179                0.73        1.014 ± 0.179
+FULL + spatial                                  0.720 ± 0.064        0.675 ± 0.102        1.627 ± 0.996                0.29        1.413 ± 0.350
+FULL + short-range road                         0.774 ± 0.056        0.719 ± 0.085        0.549 ± 0.451                0.49        1.255 ± 0.194
+FULL + spatial + short-range road               0.763 ± 0.047        0.699 ± 0.085        0.668 ± 0.308                0.49        1.459 ± 0.226
+  FULL + spatial: beats Standard on AUC 1/5, on bias 4/5; beats Stage-3 FULL on AUC 1/5
+  FULL + short-range road: beats Standard on AUC 3/5, on bias 5/5; beats Stage-3 FULL on AUC 4/5
+  FULL + spatial + short-range road: beats Standard on AUC 3/5, on bias 5/5; beats Stage-3 FULL on AUC 4/5
+  learned road-cut term (FULL + short-range road): strength 0.32 (log-odds at the road), range 182 m
+  learned road-cut term (FULL + spatial + short-range road): strength 0.33 (log-odds at the road), range 182 m
+
+=== Scenario C  (draws [0, 1, 2, 3, 4]; same data as Stage 3) ===
+model                                                    AUC        AUC remote ¼          |log bias| bias ratio (median)         rate ÷ true
+Standard (terrain + access)                     0.789 ± 0.087        0.749 ± 0.156        1.422 ± 0.841                0.17        0.283 ± 0.105
+Occupancy + anchor                              0.748 ± 0.056        0.630 ± 0.097        0.503 ± 0.361                0.73        1.512 ± 0.558
+Occupancy + monotone + anchor (FULL)            0.799 ± 0.049        0.729 ± 0.066        0.471 ± 0.250                0.59        1.201 ± 0.477
+Oracle (full real inventory)                    0.837 ± 0.045        0.791 ± 0.068        0.303 ± 0.154                0.77        0.930 ± 0.242
+FULL + spatial                                  0.777 ± 0.048        0.704 ± 0.068        0.549 ± 0.229                0.66        1.364 ± 0.503
+  FULL + spatial: beats Standard on AUC 2/5, on bias 3/5; beats Stage-3 FULL on AUC 1/5

@@ -1,0 +1,27 @@
+
+=== Scenario A (same data as B): 5 draws ===
+model                                                    AUC    AUC remote 1/4      |log bias|  bias ratio med
+Standard (terrain + access)                     0.754 ± 0.069      0.718 ± 0.103     1.76 ± 0.71          0.16
+Steger-GLM (access neutralised)                 0.713 ± 0.031      0.597 ± 0.058     0.66 ± 0.33          0.56
+Steger-MLP (access = mean)                      0.736 ± 0.026      0.593 ± 0.120     0.54 ± 0.20          0.66
+Steger-MLP (access = best observation)          0.740 ± 0.014      0.603 ± 0.077     0.46 ± 0.22          0.67
+Standard (terrain + access), re-run             0.754 ± 0.070      0.718 ± 0.103     1.76 ± 0.71          0.16
+OURS: occupancy full (terrain-only psi)         0.772 ± 0.053      0.712 ± 0.085     0.52 ± 0.35          0.53
+OURS: + short-range road (scen. B data)         0.774 ± 0.056      0.719 ± 0.085     0.55 ± 0.45          0.49
+Oracle                                          0.822 ± 0.040      0.776 ± 0.050     0.33 ± 0.25          0.79
+  OURS vs Steger-GLM (access neutralised): higher AUC in 4/5 draws, less bias in 2/5 draws
+  OURS vs Steger-MLP (access = mean): higher AUC in 3/5 draws, less bias in 3/5 draws
+  OURS vs Steger-MLP (access = best observation): higher AUC in 3/5 draws, less bias in 3/5 draws
+
+=== Scenario C (stress test): 5 draws ===
+model                                                    AUC    AUC remote 1/4      |log bias|  bias ratio med
+Standard (terrain + access)                     0.789 ± 0.087      0.749 ± 0.156     1.42 ± 0.84          0.17
+Steger-GLM (access neutralised)                 0.619 ± 0.123      0.549 ± 0.096     1.08 ± 0.90          0.42
+Steger-MLP (access = mean)                      0.721 ± 0.061      0.572 ± 0.082     0.59 ± 0.33          0.63
+Steger-MLP (access = best observation)          0.687 ± 0.054      0.536 ± 0.072     0.66 ± 0.30          0.43
+Standard (terrain + access), re-run             0.789 ± 0.087      0.749 ± 0.155     1.42 ± 0.84          0.17
+OURS: occupancy full (terrain-only psi)         0.799 ± 0.049      0.729 ± 0.066     0.47 ± 0.25          0.59
+Oracle                                          0.837 ± 0.045      0.791 ± 0.068     0.30 ± 0.15          0.77
+  OURS vs Steger-GLM (access neutralised): higher AUC in 5/5 draws, less bias in 5/5 draws
+  OURS vs Steger-MLP (access = mean): higher AUC in 5/5 draws, less bias in 3/5 draws
+  OURS vs Steger-MLP (access = best observation): higher AUC in 4/5 draws, less bias in 3/5 draws

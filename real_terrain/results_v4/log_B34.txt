@@ -1,0 +1,3 @@
+[scenario B] seed 3: 515s
+[scenario B] seed 4: 292s
+finished

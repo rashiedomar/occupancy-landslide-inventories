@@ -1,0 +1,6 @@
+[scenario C] seed 0: 197s
+[scenario C] seed 1: 191s
+[scenario C] seed 2: 205s
+[scenario C] seed 3: 117s
+[scenario C] seed 4: 194s
+finished

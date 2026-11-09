@@ -1,0 +1,6 @@
+draw 0: 825s {'n_test': 19007, 'true_rate': 0.10441805528953585, 'records_per_inventory': [5490, 4829, 810, 133], 'union_recall': 0.6426169367166005}
+draw 1: 1170s {'n_test': 17055, 'true_rate': 0.10441805528953585, 'records_per_inventory': [5490, 4829, 810, 122], 'union_recall': 0.6426169367166005}
+draw 2: 1383s {'n_test': 15017, 'true_rate': 0.10441805528953585, 'records_per_inventory': [5490, 4829, 810, 11], 'union_recall': 0.6426169367166005}
+draw 3: 684s {'n_test': 14321, 'true_rate': 0.10441805528953585, 'records_per_inventory': [5490, 4829, 810, 49], 'union_recall': 0.6426169367166005}
+draw 4: 731s {'n_test': 13463, 'true_rate': 0.10441805528953585, 'records_per_inventory': [5490, 4829, 810, 21], 'union_recall': 0.6426169367166005}
+finished

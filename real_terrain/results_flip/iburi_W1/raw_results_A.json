@@ -1,0 +1,247 @@
+{
+ "0": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.6587995559778206,
+   "auc_remote_quarter": 0.6801931996300964,
+   "mean_pred_over_true": 0.24213640782615356,
+   "remote_near_ratio": 0.046851415781179094,
+   "abs_log_ratio": 3.060774051305444
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.772078162684188,
+   "auc_remote_quarter": 0.6924734801283952,
+   "mean_pred_over_true": 0.33993179768099163,
+   "remote_near_ratio": 0.5370734798326762,
+   "abs_log_ratio": 0.6216203598813418
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_true_landslides": 0.7262648504558293,
+   "auc_remote_quarter": 0.6325649919842327,
+   "mean_pred_over_true": 0.2650861738957418,
+   "remote_near_ratio": 0.4629867968761675,
+   "abs_log_ratio": 0.770056741768666
+  },
+  "OURS full": {
+   "auc_true_landslides": 0.8399311318129289,
+   "auc_remote_quarter": 0.802226116048316,
+   "mean_pred_over_true": 0.9890251894051129,
+   "remote_near_ratio": 1.03256030461842,
+   "abs_log_ratio": 0.032041450557554786
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8578638856282154,
+   "auc_remote_quarter": 0.8271738528883541,
+   "mean_pred_over_true": 0.9904848364266483,
+   "remote_near_ratio": 1.0885748123624206,
+   "abs_log_ratio": 0.08486932910782556
+  },
+  "_info": {
+   "n_cells": 56399,
+   "n_true": 8943,
+   "n_test": 14314,
+   "frac_recorded": 0.28558649222855864,
+   "per_inventory": [
+    347,
+    1844,
+    675,
+    256
+   ]
+  }
+ },
+ "1": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.7057204152930054,
+   "auc_remote_quarter": 0.695325564569664,
+   "mean_pred_over_true": 0.3430393899670845,
+   "remote_near_ratio": 0.16488257260055827,
+   "abs_log_ratio": 1.802521739655583
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7740110607877924,
+   "auc_remote_quarter": 0.7124012640194526,
+   "mean_pred_over_true": 0.3348130357118636,
+   "remote_near_ratio": 0.6579453522846744,
+   "abs_log_ratio": 0.41863340234486157
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_true_landslides": 0.7654573999307626,
+   "auc_remote_quarter": 0.658426837788314,
+   "mean_pred_over_true": 0.35415914798169024,
+   "remote_near_ratio": 0.7892971784842744,
+   "abs_log_ratio": 0.2366123769805241
+  },
+  "OURS full": {
+   "auc_true_landslides": 0.8184344404575875,
+   "auc_remote_quarter": 0.7727659003155075,
+   "mean_pred_over_true": 1.0424455478923382,
+   "remote_near_ratio": 0.8222237919123234,
+   "abs_log_ratio": 0.19574266804536208
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8464060280737005,
+   "auc_remote_quarter": 0.809124485031414,
+   "mean_pred_over_true": 1.013840551621795,
+   "remote_near_ratio": 0.996522986619117,
+   "abs_log_ratio": 0.0034830722404759957
+  },
+  "_info": {
+   "n_cells": 56399,
+   "n_true": 8943,
+   "n_test": 17717,
+   "frac_recorded": 0.3484289388348429,
+   "per_inventory": [
+    314,
+    1857,
+    1516,
+    305
+   ]
+  }
+ },
+ "2": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.7110414600866255,
+   "auc_remote_quarter": 0.5868271253866952,
+   "mean_pred_over_true": 0.3638523753736194,
+   "remote_near_ratio": 0.20658662566944697,
+   "abs_log_ratio": 1.5770354597770826
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7964710112525516,
+   "auc_remote_quarter": 0.6593864622181455,
+   "mean_pred_over_true": 0.19475150574280056,
+   "remote_near_ratio": 0.536394117910224,
+   "abs_log_ratio": 0.6228860934993478
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_true_landslides": 0.763489513959623,
+   "auc_remote_quarter": 0.5674403709967173,
+   "mean_pred_over_true": 0.35168077283672994,
+   "remote_near_ratio": 0.6999244547873588,
+   "abs_log_ratio": 0.35678287149504617
+  },
+  "OURS full": {
+   "auc_true_landslides": 0.839478480524054,
+   "auc_remote_quarter": 0.7343727474416704,
+   "mean_pred_over_true": 1.069749271574037,
+   "remote_near_ratio": 0.7901239920190766,
+   "abs_log_ratio": 0.23556539391385256
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8617532632052037,
+   "auc_remote_quarter": 0.781054501964279,
+   "mean_pred_over_true": 1.0184372650142401,
+   "remote_near_ratio": 0.8880842297879062,
+   "abs_log_ratio": 0.11868868712350365
+  },
+  "_info": {
+   "n_cells": 56399,
+   "n_true": 8943,
+   "n_test": 14749,
+   "frac_recorded": 0.34921167393492114,
+   "per_inventory": [
+    315,
+    1795,
+    1592,
+    159
+   ]
+  }
+ },
+ "3": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.8239073000570565,
+   "auc_remote_quarter": 0.7746058000871598,
+   "mean_pred_over_true": 0.4181437961892103,
+   "remote_near_ratio": 0.41725797462504827,
+   "abs_log_ratio": 0.8740506042799953
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.759420089166527,
+   "auc_remote_quarter": 0.4389653737966007,
+   "mean_pred_over_true": 0.4104156258230558,
+   "remote_near_ratio": 1.973179683714321,
+   "abs_log_ratio": 0.6796462942137176
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_true_landslides": 0.7493830850787226,
+   "auc_remote_quarter": 0.4812735232360049,
+   "mean_pred_over_true": 0.3397947213519427,
+   "remote_near_ratio": 1.0090715977399924,
+   "abs_log_ratio": 0.00903069796201375
+  },
+  "OURS full": {
+   "auc_true_landslides": 0.8428764708011034,
+   "auc_remote_quarter": 0.775047541698031,
+   "mean_pred_over_true": 1.093544031872516,
+   "remote_near_ratio": 0.9245862058130871,
+   "abs_log_ratio": 0.07840898662529969
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8653322715514767,
+   "auc_remote_quarter": 0.8226090487698585,
+   "mean_pred_over_true": 1.0131727477834178,
+   "remote_near_ratio": 0.9995311981852845,
+   "abs_log_ratio": 0.00046891173664201775
+  },
+  "_info": {
+   "n_cells": 56399,
+   "n_true": 8943,
+   "n_test": 11110,
+   "frac_recorded": 0.2958738678295874,
+   "per_inventory": [
+    328,
+    1790,
+    805,
+    211
+   ]
+  }
+ },
+ "4": {
+  "Standard (terrain + access)": {
+   "auc_true_landslides": 0.7124179945918897,
+   "auc_remote_quarter": 0.6278568980151475,
+   "mean_pred_over_true": 0.36507412410070095,
+   "remote_near_ratio": 0.10348009153982748,
+   "abs_log_ratio": 2.2683760370509827
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_true_landslides": 0.7797252189783213,
+   "auc_remote_quarter": 0.6966156715199792,
+   "mean_pred_over_true": 0.40084079712809123,
+   "remote_near_ratio": 0.6938478753941719,
+   "abs_log_ratio": 0.3655025422233159
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_true_landslides": 0.7556732097950576,
+   "auc_remote_quarter": 0.5877311716505615,
+   "mean_pred_over_true": 0.25102042747411435,
+   "remote_near_ratio": 0.6916127600136375,
+   "abs_log_ratio": 0.36872907535240035
+  },
+  "OURS full": {
+   "auc_true_landslides": 0.8001934898556435,
+   "auc_remote_quarter": 0.7277363133324628,
+   "mean_pred_over_true": 0.7677731654088422,
+   "remote_near_ratio": 0.5821705970413457,
+   "abs_log_ratio": 0.5409917521384104
+  },
+  "Oracle": {
+   "auc_true_landslides": 0.8485592527809533,
+   "auc_remote_quarter": 0.7926404576913032,
+   "mean_pred_over_true": 1.0120949323135984,
+   "remote_near_ratio": 0.8942491562057274,
+   "abs_log_ratio": 0.11177084442105932
+  },
+  "_info": {
+   "n_cells": 56399,
+   "n_true": 8943,
+   "n_test": 20399,
+   "frac_recorded": 0.2801073465280107,
+   "per_inventory": [
+    321,
+    1853,
+    621,
+    119
+   ]
+  }
+ }
+}

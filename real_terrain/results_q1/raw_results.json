@@ -1,0 +1,733 @@
+{
+ "0": {
+  "Standard (terrain + access)": {
+   "auc_reference": 0.8435461262693315,
+   "auc_consensus": 0.8701500496824771,
+   "auc_gentle_quarter": 0.828635842850279,
+   "rate_over_reference": 1.03316048783341,
+   "abs_log_rate": 0.03262253899319568,
+   "steep_gentle_ratio": 1.930972623509287,
+   "remote_near_ratio": 1.0641292861061755,
+   "spearman_vs_oracle": 0.9232801437147496
+  },
+  "Standard (terrain only)": {
+   "auc_reference": 0.8546978720995566,
+   "auc_consensus": 0.8799663684970088,
+   "auc_gentle_quarter": 0.8349164110334971,
+   "rate_over_reference": 1.0807916373795503,
+   "abs_log_rate": 0.0776937701982687,
+   "steep_gentle_ratio": 1.8464037619416023,
+   "remote_near_ratio": 1.0519928388449842,
+   "spearman_vs_oracle": 0.9393316257474491
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_reference": 0.8435808261621577,
+   "auc_consensus": 0.8690887481997815,
+   "auc_gentle_quarter": 0.841790787350162,
+   "rate_over_reference": 1.1427372077797473,
+   "abs_log_rate": 0.13342644392487937,
+   "steep_gentle_ratio": 1.3895363965571321,
+   "remote_near_ratio": 0.8809468193792255,
+   "spearman_vs_oracle": 0.9226453728936664
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_reference": 0.8412599590725607,
+   "auc_consensus": 0.8666532222929034,
+   "auc_gentle_quarter": 0.8486084931810622,
+   "rate_over_reference": 1.0711477407260221,
+   "abs_log_rate": 0.06873072847476154,
+   "steep_gentle_ratio": 1.3222958015290316,
+   "remote_near_ratio": 0.8813528460155665,
+   "spearman_vs_oracle": 0.9124909936438254
+  },
+  "OURS (access detection)": {
+   "auc_reference": 0.8570291084930645,
+   "auc_consensus": 0.8819675233294476,
+   "auc_gentle_quarter": 0.829771716499735,
+   "rate_over_reference": 1.259495149139882,
+   "abs_log_rate": 0.2307109653857884,
+   "steep_gentle_ratio": 1.970554587593668,
+   "remote_near_ratio": 1.1720687153304816,
+   "spearman_vs_oracle": 0.9324234873961201
+  },
+  "OURS + visibility detection": {
+   "auc_reference": 0.857687660951251,
+   "auc_consensus": 0.88217534081207,
+   "auc_gentle_quarter": 0.8311564474997227,
+   "rate_over_reference": 1.255845737333665,
+   "abs_log_rate": 0.22780923990872426,
+   "steep_gentle_ratio": 1.603753327797054,
+   "remote_near_ratio": 1.1599838789207075,
+   "spearman_vs_oracle": 0.9331866288250206
+  },
+  "OURS + visibility + false positives": {
+   "auc_reference": 0.8569118201443829,
+   "auc_consensus": 0.8817324057276399,
+   "auc_gentle_quarter": 0.8250557465104533,
+   "rate_over_reference": 1.0944058023318444,
+   "abs_log_rate": 0.09021156971040235,
+   "steep_gentle_ratio": 3.0426171747001325,
+   "remote_near_ratio": 1.1842785505102258,
+   "spearman_vs_oracle": 0.9360623577040357
+  },
+  "Oracle (reference inventory)": {
+   "auc_reference": 0.8745211753656136,
+   "auc_consensus": 0.8818841644723728,
+   "auc_gentle_quarter": 0.8577349053233297,
+   "rate_over_reference": 0.9366356110201983,
+   "abs_log_rate": 0.06546096136656104,
+   "steep_gentle_ratio": 1.4852471256887676,
+   "remote_near_ratio": 0.9671902272560725,
+   "spearman_vs_oracle": 1.0
+  },
+  "_learned": {
+   "OURS (access detection)": {
+    "mean_detection": [
+     0.664937436580658,
+     0.5809979438781738,
+     0.1334563046693802
+    ]
+   },
+   "OURS + visibility detection": {
+    "mean_detection": [
+     0.6171721816062927,
+     0.4863189160823822,
+     0.10193673521280289
+    ]
+   },
+   "OURS + visibility + false positives": {
+    "mean_detection": [
+     0.676089882850647,
+     0.5592909455299377,
+     0.11858770251274109
+    ],
+    "false_pos_rate": [
+     0.011405094526708126,
+     0.009467262774705887,
+     0.007447503041476011
+    ]
+   },
+   "OURS + visibility + spillover false positives": [
+    {
+     "detection": [
+      0.08155174553394318,
+      0.07201974093914032,
+      0.011161070317029953
+     ],
+     "spill": [
+      0.3775250315666199,
+      0.3343600928783417,
+      0.12277358025312424
+     ],
+     "background": [
+      0.005718589760363102,
+      0.0037821412552148104,
+      0.002241947455331683
+     ]
+    },
+    {
+     "detection": [
+      0.08350129425525665,
+      0.07091564685106277,
+      0.010303035378456116
+     ],
+     "spill": [
+      0.394243448972702,
+      0.3476514518260956,
+      0.11401586979627609
+     ],
+     "background": [
+      0.005576031748205423,
+      0.0036505975294858217,
+      0.0020386474207043648
+     ]
+    },
+    {
+     "detection": [
+      0.084120012819767,
+      0.07206102460622787,
+      0.010968517512083054
+     ],
+     "spill": [
+      0.37532302737236023,
+      0.33221864700317383,
+      0.12226720154285431
+     ],
+     "background": [
+      0.005507012363523245,
+      0.003456955077126622,
+      0.0022555303294211626
+     ]
+    }
+   ]
+  },
+  "_info": {
+   "n_test": 19007,
+   "true_rate": 0.10441805528953585,
+   "records_per_inventory": [
+    5490,
+    4829,
+    810,
+    133
+   ],
+   "union_recall": 0.6426169367166005
+  },
+  "OURS + visibility + spillover false positives": {
+   "auc_reference": 0.7305154408830125,
+   "auc_consensus": 0.7240414759865534,
+   "auc_gentle_quarter": 0.8036121274839536,
+   "rate_over_reference": 1.823358835114222,
+   "abs_log_rate": 0.600680314019465,
+   "steep_gentle_ratio": 0.26895364967666185,
+   "remote_near_ratio": 3.8106861773723053,
+   "spearman_vs_oracle": null
+  }
+ },
+ "1": {
+  "Standard (terrain + access)": {
+   "auc_reference": 0.8210769627989425,
+   "auc_consensus": 0.863480141926738,
+   "auc_gentle_quarter": 0.828920165394402,
+   "rate_over_reference": 1.1408267880246143,
+   "abs_log_rate": 0.13175325219095887,
+   "steep_gentle_ratio": 1.1098392258829146,
+   "remote_near_ratio": 1.2721955131767706,
+   "spearman_vs_oracle": 0.9258845779354146
+  },
+  "Standard (terrain only)": {
+   "auc_reference": 0.8236221872591803,
+   "auc_consensus": 0.8691638751643064,
+   "auc_gentle_quarter": 0.8316137881679388,
+   "rate_over_reference": 1.1730465491071043,
+   "abs_log_rate": 0.15960425269222994,
+   "steep_gentle_ratio": 1.138310930622158,
+   "remote_near_ratio": 1.2417173226807696,
+   "spearman_vs_oracle": 0.9343864825452194
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_reference": 0.8194775611563828,
+   "auc_consensus": 0.8610127870258235,
+   "auc_gentle_quarter": 0.8343272900763359,
+   "rate_over_reference": 1.1475529514203135,
+   "abs_log_rate": 0.13763180691650978,
+   "steep_gentle_ratio": 0.950924346696085,
+   "remote_near_ratio": 0.9473466747964379,
+   "spearman_vs_oracle": 0.9335273464531466
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_reference": 0.8164506240815058,
+   "auc_consensus": 0.8541162970410978,
+   "auc_gentle_quarter": 0.8307424194232401,
+   "rate_over_reference": 1.0821390153852686,
+   "abs_log_rate": 0.07893965219479204,
+   "steep_gentle_ratio": 0.9070690923662329,
+   "remote_near_ratio": 0.8787940764434852,
+   "spearman_vs_oracle": 0.9090428560555671
+  },
+  "OURS (access detection)": {
+   "auc_reference": 0.8242714799609457,
+   "auc_consensus": 0.868826868288576,
+   "auc_gentle_quarter": 0.8266804495335031,
+   "rate_over_reference": 1.461483785920095,
+   "abs_log_rate": 0.3794522113715268,
+   "steep_gentle_ratio": 1.2455539418690242,
+   "remote_near_ratio": 1.4260857076074975,
+   "spearman_vs_oracle": 0.9343015025409199
+  },
+  "OURS + visibility detection": {
+   "auc_reference": 0.8213897398858118,
+   "auc_consensus": 0.8673546690587329,
+   "auc_gentle_quarter": 0.8297418363019508,
+   "rate_over_reference": 1.3898713666720677,
+   "abs_log_rate": 0.32921120089778755,
+   "steep_gentle_ratio": 0.9882341783438157,
+   "remote_near_ratio": 1.303107554504223,
+   "spearman_vs_oracle": 0.9257064887435589
+  },
+  "OURS + visibility + false positives": {
+   "auc_reference": 0.825173800460674,
+   "auc_consensus": 0.8703470273451733,
+   "auc_gentle_quarter": 0.839340145250212,
+   "rate_over_reference": 1.1960251910624489,
+   "abs_log_rate": 0.17900371806786802,
+   "steep_gentle_ratio": 1.7033390927670609,
+   "remote_near_ratio": 1.4102169617503044,
+   "spearman_vs_oracle": 0.9379741850720942
+  },
+  "Oracle (reference inventory)": {
+   "auc_reference": 0.8383559003210415,
+   "auc_consensus": 0.8612183015385875,
+   "auc_gentle_quarter": 0.853947996183206,
+   "rate_over_reference": 1.0924854557086157,
+   "abs_log_rate": 0.08845533504646565,
+   "steep_gentle_ratio": 0.8970912107780799,
+   "remote_near_ratio": 0.9070406049342385,
+   "spearman_vs_oracle": 1.0
+  },
+  "_learned": {
+   "OURS (access detection)": {
+    "mean_detection": [
+     0.6167888641357422,
+     0.5531803369522095,
+     0.13982784748077393
+    ]
+   },
+   "OURS + visibility detection": {
+    "mean_detection": [
+     0.5964905023574829,
+     0.48631080985069275,
+     0.1189073920249939
+    ]
+   },
+   "OURS + visibility + false positives": {
+    "mean_detection": [
+     0.6513720154762268,
+     0.5321191549301147,
+     0.12388690561056137
+    ],
+    "false_pos_rate": [
+     0.008451116271317005,
+     0.008306077681481838,
+     0.00632786238566041
+    ]
+   },
+   "OURS + visibility + spillover false positives": [
+    {
+     "detection": [
+      0.8509481549263,
+      0.7799455523490906,
+      0.20538745820522308
+     ],
+     "spill": [
+      0.2722174823284149,
+      0.22297942638397217,
+      0.10322476178407669
+     ],
+     "background": [
+      0.0031421638559550047,
+      0.0022330551873892546,
+      0.0015264468966051936
+     ]
+    },
+    {
+     "detection": [
+      0.8544710278511047,
+      0.7829130291938782,
+      0.21421407163143158
+     ],
+     "spill": [
+      0.2730534076690674,
+      0.227627232670784,
+      0.11423172801733017
+     ],
+     "background": [
+      0.0033910530619323254,
+      0.002366523491218686,
+      0.001749094924889505
+     ]
+    },
+    {
+     "detection": [
+      0.8483583331108093,
+      0.7779280543327332,
+      0.20680367946624756
+     ],
+     "spill": [
+      0.2679945230484009,
+      0.22181929647922516,
+      0.1026097908616066
+     ],
+     "background": [
+      0.0031695386860519648,
+      0.0021737879142165184,
+      0.001537748845294118
+     ]
+    }
+   ]
+  },
+  "_info": {
+   "n_test": 17055,
+   "true_rate": 0.10441805528953585,
+   "records_per_inventory": [
+    5490,
+    4829,
+    810,
+    122
+   ],
+   "union_recall": 0.6426169367166005
+  },
+  "OURS + visibility + spillover false positives": {
+   "auc_reference": 0.8204155810319783,
+   "auc_consensus": 0.8616842031322361,
+   "auc_gentle_quarter": 0.8095214429601356,
+   "rate_over_reference": 0.3168403599786278,
+   "abs_log_rate": 1.1493572282339835,
+   "steep_gentle_ratio": 3.813090338635801,
+   "remote_near_ratio": 1.6340915494937103,
+   "spearman_vs_oracle": null
+  }
+ },
+ "2": {
+  "Standard (terrain + access)": {
+   "auc_reference": 0.8333198207308268,
+   "auc_consensus": 0.876133829950248,
+   "auc_gentle_quarter": 0.8186787911645597,
+   "rate_over_reference": 1.0842314573326504,
+   "abs_log_rate": 0.08087140174956334,
+   "steep_gentle_ratio": 1.6014267318358306,
+   "remote_near_ratio": 1.051802309181944,
+   "spearman_vs_oracle": 0.901459820526123
+  },
+  "Standard (terrain only)": {
+   "auc_reference": 0.8422698162810723,
+   "auc_consensus": 0.8785963343695823,
+   "auc_gentle_quarter": 0.8171919794310686,
+   "rate_over_reference": 1.1183170278966825,
+   "abs_log_rate": 0.11182490152705292,
+   "steep_gentle_ratio": 1.698951253744914,
+   "remote_near_ratio": 1.118222168060181,
+   "spearman_vs_oracle": 0.9352332298118494
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_reference": 0.8253082581008052,
+   "auc_consensus": 0.8615158223912335,
+   "auc_gentle_quarter": 0.8223917132835538,
+   "rate_over_reference": 1.1668024101859356,
+   "abs_log_rate": 0.15426702464688205,
+   "steep_gentle_ratio": 1.1904409604729917,
+   "remote_near_ratio": 0.9076449368597738,
+   "spearman_vs_oracle": 0.8881088080054892
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_reference": 0.8194079529931699,
+   "auc_consensus": 0.8531874022522058,
+   "auc_gentle_quarter": 0.8290330795074627,
+   "rate_over_reference": 1.0375698664670727,
+   "abs_log_rate": 0.036881312028483444,
+   "steep_gentle_ratio": 1.2852147434159493,
+   "remote_near_ratio": 0.8766868201919481,
+   "spearman_vs_oracle": 0.8900156286032401
+  },
+  "OURS (access detection)": {
+   "auc_reference": 0.8443215045099919,
+   "auc_consensus": 0.8817859407309334,
+   "auc_gentle_quarter": 0.8296614833616731,
+   "rate_over_reference": 1.3046397176213373,
+   "abs_log_rate": 0.26592692420690306,
+   "steep_gentle_ratio": 1.7876019843036808,
+   "remote_near_ratio": 1.1530750221785329,
+   "spearman_vs_oracle": 0.920020816709472
+  },
+  "OURS + visibility detection": {
+   "auc_reference": 0.8392999640356889,
+   "auc_consensus": 0.8793800952556264,
+   "auc_gentle_quarter": 0.8230036882788305,
+   "rate_over_reference": 1.2913701428347324,
+   "abs_log_rate": 0.2557037809450741,
+   "steep_gentle_ratio": 1.483602219128765,
+   "remote_near_ratio": 1.0704079216898332,
+   "spearman_vs_oracle": 0.8906409385870739
+  },
+  "OURS + visibility + false positives": {
+   "auc_reference": 0.8449655557327538,
+   "auc_consensus": 0.881869976362041,
+   "auc_gentle_quarter": 0.8304911407378202,
+   "rate_over_reference": 1.1142177846347552,
+   "abs_log_rate": 0.10815262027467258,
+   "steep_gentle_ratio": 3.211381691029087,
+   "remote_near_ratio": 1.1520528012940534,
+   "spearman_vs_oracle": 0.9249050607226689
+  },
+  "Oracle (reference inventory)": {
+   "auc_reference": 0.854533492989929,
+   "auc_consensus": 0.8730516342103655,
+   "auc_gentle_quarter": 0.8302077429212154,
+   "rate_over_reference": 0.9930895160649276,
+   "abs_log_rate": 0.006934471905379918,
+   "steep_gentle_ratio": 1.3052282562923638,
+   "remote_near_ratio": 0.8607457028421187,
+   "spearman_vs_oracle": 0.9999999999999998
+  },
+  "_learned": {
+   "OURS (access detection)": {
+    "mean_detection": [
+     0.6549240350723267,
+     0.5591455101966858,
+     0.12574873864650726
+    ]
+   },
+   "OURS + visibility detection": {
+    "mean_detection": [
+     0.605628490447998,
+     0.45336249470710754,
+     0.08599188923835754
+    ]
+   },
+   "OURS + visibility + false positives": {
+    "mean_detection": [
+     0.6739212870597839,
+     0.5020605325698853,
+     0.09292148053646088
+    ],
+    "false_pos_rate": [
+     0.00773732690140605,
+     0.0075569297187030315,
+     0.004872191231697798
+    ]
+   }
+  },
+  "_info": {
+   "n_test": 15017,
+   "true_rate": 0.10441805528953585,
+   "records_per_inventory": [
+    5490,
+    4829,
+    810,
+    11
+   ],
+   "union_recall": 0.6426169367166005
+  }
+ },
+ "3": {
+  "Standard (terrain + access)": {
+   "auc_reference": 0.8411301782436407,
+   "auc_consensus": 0.8732190507354134,
+   "auc_gentle_quarter": 0.7807677743065418,
+   "rate_over_reference": 1.1266072983055977,
+   "abs_log_rate": 0.11921072562685038,
+   "steep_gentle_ratio": 1.2358646775141588,
+   "remote_near_ratio": 1.0352588321851648,
+   "spearman_vs_oracle": 0.9142250325687985
+  },
+  "Standard (terrain only)": {
+   "auc_reference": 0.8433558096027791,
+   "auc_consensus": 0.8767057866501312,
+   "auc_gentle_quarter": 0.8058837451481586,
+   "rate_over_reference": 1.128388624350175,
+   "abs_log_rate": 0.1207906188738453,
+   "steep_gentle_ratio": 1.052222177552221,
+   "remote_near_ratio": 0.9924330462580143,
+   "spearman_vs_oracle": 0.918064773092056
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_reference": 0.8450618623157897,
+   "auc_consensus": 0.8736943700884799,
+   "auc_gentle_quarter": 0.8131023383508472,
+   "rate_over_reference": 1.1494910818941437,
+   "abs_log_rate": 0.13931930694319497,
+   "steep_gentle_ratio": 1.055444874582949,
+   "remote_near_ratio": 0.9661197952602222,
+   "spearman_vs_oracle": 0.9234605201849331
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_reference": 0.8417756145566571,
+   "auc_consensus": 0.8698847098791046,
+   "auc_gentle_quarter": 0.8517561298873426,
+   "rate_over_reference": 1.0071066566923046,
+   "abs_log_rate": 0.007081523413104873,
+   "steep_gentle_ratio": 1.261726158498921,
+   "remote_near_ratio": 0.8958872629248579,
+   "spearman_vs_oracle": 0.9125146605345279
+  },
+  "OURS (access detection)": {
+   "auc_reference": 0.8418554424374456,
+   "auc_consensus": 0.8760136912733764,
+   "auc_gentle_quarter": 0.7967149484048094,
+   "rate_over_reference": 1.4068963797196992,
+   "abs_log_rate": 0.34138612916557753,
+   "steep_gentle_ratio": 1.0821944833598316,
+   "remote_near_ratio": 1.097404305831246,
+   "spearman_vs_oracle": 0.9178727590386927
+  },
+  "OURS + visibility detection": {
+   "auc_reference": 0.839278579132391,
+   "auc_consensus": 0.8721395883127666,
+   "auc_gentle_quarter": 0.7944239325949067,
+   "rate_over_reference": 1.3959353368996914,
+   "abs_log_rate": 0.3335646829949364,
+   "steep_gentle_ratio": 0.9192345030854697,
+   "remote_near_ratio": 1.0180657967277196,
+   "spearman_vs_oracle": 0.9103238027187937
+  },
+  "OURS + visibility + false positives": {
+   "auc_reference": 0.8412214330993003,
+   "auc_consensus": 0.8726102119332404,
+   "auc_gentle_quarter": 0.8287229006910916,
+   "rate_over_reference": 1.153958545040689,
+   "abs_log_rate": 0.1431982445989765,
+   "steep_gentle_ratio": 1.453480327580713,
+   "remote_near_ratio": 1.1552521373914637,
+   "spearman_vs_oracle": 0.9301992173868464
+  },
+  "Oracle (reference inventory)": {
+   "auc_reference": 0.8585676882489497,
+   "auc_consensus": 0.8680705506636182,
+   "auc_gentle_quarter": 0.8435719019218024,
+   "rate_over_reference": 0.9981699618948263,
+   "abs_log_rate": 0.001831714670671616,
+   "steep_gentle_ratio": 1.024833522023496,
+   "remote_near_ratio": 0.8693472489066747,
+   "spearman_vs_oracle": 1.0
+  },
+  "_learned": {
+   "OURS (access detection)": {
+    "mean_detection": [
+     0.6131168603897095,
+     0.5524716377258301,
+     0.12354477494955063
+    ]
+   },
+   "OURS + visibility detection": {
+    "mean_detection": [
+     0.5753251314163208,
+     0.47726717591285706,
+     0.11228286474943161
+    ]
+   },
+   "OURS + visibility + false positives": {
+    "mean_detection": [
+     0.6263532638549805,
+     0.5278213620185852,
+     0.12273833900690079
+    ],
+    "false_pos_rate": [
+     0.009348643943667412,
+     0.008901609107851982,
+     0.007516214158385992
+    ]
+   }
+  },
+  "_info": {
+   "n_test": 14321,
+   "true_rate": 0.10441805528953585,
+   "records_per_inventory": [
+    5490,
+    4829,
+    810,
+    49
+   ],
+   "union_recall": 0.6426169367166005
+  }
+ },
+ "4": {
+  "Standard (terrain + access)": {
+   "auc_reference": 0.8087518700307821,
+   "auc_consensus": 0.8512971642874284,
+   "auc_gentle_quarter": 0.9055891238670695,
+   "rate_over_reference": 1.1441227104614327,
+   "abs_log_rate": 0.1346381515945571,
+   "steep_gentle_ratio": 2.168939241623496,
+   "remote_near_ratio": 1.4243981043497722,
+   "spearman_vs_oracle": 0.9320370746210691
+  },
+  "Standard (terrain only)": {
+   "auc_reference": 0.8178975487669259,
+   "auc_consensus": 0.8578262428471051,
+   "auc_gentle_quarter": 0.9132822615451014,
+   "rate_over_reference": 1.1638891156950761,
+   "abs_log_rate": 0.1517670833412409,
+   "steep_gentle_ratio": 2.045356595452456,
+   "remote_near_ratio": 1.2667691707611084,
+   "spearman_vs_oracle": 0.9490666576903966
+  },
+  "Steger-MLP (access = mean)": {
+   "auc_reference": 0.8118171836744361,
+   "auc_consensus": 0.8513751774669716,
+   "auc_gentle_quarter": 0.9048122572291757,
+   "rate_over_reference": 1.1263019666119924,
+   "abs_log_rate": 0.11893967015184363,
+   "steep_gentle_ratio": 1.9257418545809657,
+   "remote_near_ratio": 1.2105075518290203,
+   "spearman_vs_oracle": 0.9399583152573384
+  },
+  "Steger-GLM (access neutralised)": {
+   "auc_reference": 0.8085414490527781,
+   "auc_consensus": 0.8482618212520856,
+   "auc_gentle_quarter": 0.9067436340094951,
+   "rate_over_reference": 1.027403267430976,
+   "abs_log_rate": 0.02703451933697594,
+   "steep_gentle_ratio": 1.697400636723972,
+   "remote_near_ratio": 1.140236536661784,
+   "spearman_vs_oracle": 0.9279318789640841
+  },
+  "OURS (access detection)": {
+   "auc_reference": 0.8176327589586379,
+   "auc_consensus": 0.8577540127053342,
+   "auc_gentle_quarter": 0.9143072939145447,
+   "rate_over_reference": 1.4862115810020033,
+   "abs_log_rate": 0.39623031906856454,
+   "steep_gentle_ratio": 2.22259061272769,
+   "remote_near_ratio": 1.3959163029988606,
+   "spearman_vs_oracle": 0.9495866816560709
+  },
+  "OURS + visibility detection": {
+   "auc_reference": 0.8172342641539097,
+   "auc_consensus": 0.8567034949788774,
+   "auc_gentle_quarter": 0.9154618040569702,
+   "rate_over_reference": 1.434304021241403,
+   "abs_log_rate": 0.36067972894054035,
+   "steep_gentle_ratio": 1.8436103045621657,
+   "remote_near_ratio": 1.2706607977549236,
+   "spearman_vs_oracle": 0.9497049087721368
+  },
+  "OURS + visibility + false positives": {
+   "auc_reference": 0.8174814181043669,
+   "auc_consensus": 0.8560845364461497,
+   "auc_gentle_quarter": 0.9183534743202417,
+   "rate_over_reference": 1.213472049429084,
+   "abs_log_rate": 0.19348571289831057,
+   "steep_gentle_ratio": 3.1068799023959723,
+   "remote_near_ratio": 1.3098626136779785,
+   "spearman_vs_oracle": 0.9517177773976565
+  },
+  "Oracle (reference inventory)": {
+   "auc_reference": 0.8348284257779806,
+   "auc_consensus": 0.8512566251926476,
+   "auc_gentle_quarter": 0.9296504100129478,
+   "rate_over_reference": 0.940588337465988,
+   "abs_log_rate": 0.06124970858485591,
+   "steep_gentle_ratio": 1.4818032331007687,
+   "remote_near_ratio": 0.9380838871002197,
+   "spearman_vs_oracle": 1.0
+  },
+  "_learned": {
+   "OURS (access detection)": {
+    "mean_detection": [
+     0.6047607660293579,
+     0.5509058237075806,
+     0.1215360164642334
+    ]
+   },
+   "OURS + visibility detection": {
+    "mean_detection": [
+     0.578693151473999,
+     0.4929543733596802,
+     0.1102333590388298
+    ]
+   },
+   "OURS + visibility + false positives": {
+    "mean_detection": [
+     0.634041428565979,
+     0.5536731481552124,
+     0.11754553020000458
+    ],
+    "false_pos_rate": [
+     0.009856786578893661,
+     0.00907030887901783,
+     0.007765632122755051
+    ]
+   }
+  },
+  "_info": {
+   "n_test": 13463,
+   "true_rate": 0.10441805528953585,
+   "records_per_inventory": [
+    5490,
+    4829,
+    810,
+    21
+   ],
+   "union_recall": 0.6426169367166005
+  }
+ }
+}

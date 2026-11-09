@@ -1,0 +1,17 @@
+# macOS and external-drive metadata
+._*
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv*/
+
+# Raw downloads and regenerated worlds (see data/README.md)
+data/raw*/
+data/processed/flip/
+
+# Superseded output tables written by summarize_claims.py
+real_terrain/claims_table.*
+CLAIMS.md

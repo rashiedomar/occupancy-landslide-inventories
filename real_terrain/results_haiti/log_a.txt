@@ -1,0 +1,4 @@
+[A] draw 0: 232s {'n_cells': 63995, 'n_true': 6680, 'n_test': 20305, 'frac_recorded': 0.3029940119760479, 'per_inventory': [172, 843, 1229, 45]}
+[A] draw 1: 229s {'n_cells': 63995, 'n_true': 6680, 'n_test': 16608, 'frac_recorded': 0.21751497005988024, 'per_inventory': [183, 881, 513, 66]}
+[A] draw 2: 202s {'n_cells': 63995, 'n_true': 6680, 'n_test': 18936, 'frac_recorded': 0.20089820359281438, 'per_inventory': [189, 913, 414, 15]}
+finished

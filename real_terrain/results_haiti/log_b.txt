@@ -1,0 +1,3 @@
+[A] draw 3: 233s {'n_cells': 63995, 'n_true': 6680, 'n_test': 18313, 'frac_recorded': 0.3163173652694611, 'per_inventory': [197, 880, 1280, 93]}
+[A] draw 4: 224s {'n_cells': 63995, 'n_true': 6680, 'n_test': 15295, 'frac_recorded': 0.20119760479041915, 'per_inventory': [190, 868, 379, 66]}
+finished

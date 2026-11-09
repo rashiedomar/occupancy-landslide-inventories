@@ -1,0 +1,2 @@
+draw 0: 824s AUC 0.731 rate 1.82 steep/gentle 0.27 | spill [0.38 0.33 0.12] detection [0.08 0.07 0.01]
+draw 1: 742s AUC 0.820 rate 0.32 steep/gentle 3.81 | spill [0.27 0.22 0.1 ] detection [0.85 0.78 0.21]

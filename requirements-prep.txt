@@ -1,0 +1,4 @@
+# Only needed to rebuild the grids from raw downloads (prep_*.py, q1_real_inventories.py, q4_reports.py).
+rasterio>=1.3
+geopandas>=0.14
+shapely>=2.0

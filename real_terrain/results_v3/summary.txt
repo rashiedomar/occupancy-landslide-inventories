@@ -1,0 +1,36 @@
+
+=== Scenario A: susceptibility sees terrain only (5 draws; mean ± sd; test = 3 km blocks; scored vs FULL real inventory) ===
+model                                      auc_true_landslides    auc_remote_quarter   mean_pred_over_true     remote_near_ratio         abs_log_ratio  ratio median
+Standard (terrain + access)                      0.754 ± 0.069         0.718 ± 0.103         0.370 ± 0.072         0.218 ± 0.150         1.761 ± 0.708          0.16
+Standard (terrain only)                          0.717 ± 0.061         0.656 ± 0.081         0.410 ± 0.143         0.436 ± 0.181         0.905 ± 0.369          0.38
+Oracle (full real inventory)                     0.822 ± 0.040         0.776 ± 0.050         1.070 ± 0.149         0.799 ± 0.247         0.334 ± 0.248          0.79
+Anchor area only (terrain)                       0.682 ± 0.089         0.545 ± 0.092         1.336 ± 0.801         0.765 ± 0.415         0.661 ± 0.736          0.82
+Occupancy v1 (MLP detection)                     0.747 ± 0.022         0.582 ± 0.104         1.718 ± 0.525         0.947 ± 0.621         0.522 ± 0.174          0.66
+Occupancy + monotone                             0.774 ± 0.058         0.720 ± 0.071         1.306 ± 0.304         0.680 ± 0.320         0.581 ± 0.323          0.61
+Occupancy + anchor                               0.776 ± 0.026         0.673 ± 0.067         1.550 ± 0.318         0.768 ± 0.200         0.329 ± 0.204          0.61
+Occupancy + monotone + anchor (FULL)             0.772 ± 0.053         0.712 ± 0.085         1.267 ± 0.181         0.728 ± 0.330         0.518 ± 0.349          0.53
+FULL model detection-head corr. with truth: news=0.81, agency=0.80, satellite=0.56
+
+=== Scenario B: susceptibility also sees road distance (5 draws; mean ± sd; test = 3 km blocks; scored vs FULL real inventory) ===
+model                                      auc_true_landslides    auc_remote_quarter   mean_pred_over_true     remote_near_ratio         abs_log_ratio  ratio median
+Standard (terrain + access)                      0.754 ± 0.069         0.718 ± 0.103         0.370 ± 0.072         0.218 ± 0.150         1.761 ± 0.708          0.16
+Standard (terrain only)                          0.717 ± 0.061         0.656 ± 0.081         0.410 ± 0.143         0.435 ± 0.181         0.905 ± 0.369          0.38
+Oracle (full real inventory)                     0.820 ± 0.031         0.752 ± 0.068         1.014 ± 0.179         0.841 ± 0.292         0.352 ± 0.179          0.73
+Anchor area only (terrain)                       0.682 ± 0.089         0.545 ± 0.092         1.336 ± 0.801         0.765 ± 0.415         0.661 ± 0.736          0.82
+Occupancy v1 (MLP detection)                     0.736 ± 0.033         0.594 ± 0.098         1.787 ± 0.634         1.165 ± 1.432         0.956 ± 0.367          0.47
+Occupancy + monotone                             0.712 ± 0.056         0.669 ± 0.096         1.228 ± 0.397         0.287 ± 0.253         1.741 ± 1.069          0.27
+Occupancy + anchor                               0.748 ± 0.033         0.652 ± 0.073         1.467 ± 0.239         0.744 ± 0.609         0.823 ± 0.316          0.50
+Occupancy + monotone + anchor (FULL)             0.730 ± 0.065         0.679 ± 0.106         1.100 ± 0.355         0.285 ± 0.200         1.598 ± 0.899          0.33
+FULL model detection-head corr. with truth: news=0.80, agency=0.76, satellite=0.56
+
+=== Scenario C: stress test - detection misspecified (hidden effort, interactions, steep-slope gaps) (5 draws; mean ± sd; test = 3 km blocks; scored vs FULL real inventory) ===
+model                                      auc_true_landslides    auc_remote_quarter   mean_pred_over_true     remote_near_ratio         abs_log_ratio  ratio median
+Standard (terrain + access)                      0.789 ± 0.087         0.749 ± 0.156         0.283 ± 0.105         0.347 ± 0.299         1.422 ± 0.841          0.17
+Standard (terrain only)                          0.779 ± 0.075         0.725 ± 0.100         0.326 ± 0.148         0.700 ± 0.504         0.766 ± 0.280          0.45
+Oracle (full real inventory)                     0.837 ± 0.045         0.791 ± 0.068         0.930 ± 0.242         0.963 ± 0.348         0.303 ± 0.154          0.77
+Anchor area only (terrain)                       0.703 ± 0.042         0.615 ± 0.104         1.548 ± 0.640         0.578 ± 0.308         0.706 ± 0.550          0.46
+Occupancy v1 (MLP detection)                     0.738 ± 0.049         0.604 ± 0.076         1.411 ± 0.670         0.902 ± 0.466         0.560 ± 0.334          0.68
+Occupancy + monotone                             0.786 ± 0.047         0.708 ± 0.049         1.007 ± 0.504         0.774 ± 0.368         0.515 ± 0.318          0.56
+Occupancy + anchor                               0.748 ± 0.056         0.630 ± 0.097         1.512 ± 0.558         0.885 ± 0.414         0.503 ± 0.361          0.73
+Occupancy + monotone + anchor (FULL)             0.799 ± 0.049         0.729 ± 0.066         1.201 ± 0.477         0.817 ± 0.359         0.471 ± 0.250          0.59
+FULL model detection-head corr. with truth: news=0.69, agency=0.68, satellite=0.57

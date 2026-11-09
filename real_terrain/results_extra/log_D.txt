@@ -1,0 +1,6 @@
+[D] draw 0: 345s  {'n_added': 912, 'n_true': 10096, 'frac_recorded': 0.3287440570522979}
+[D] draw 1: 264s  {'n_added': 848, 'n_true': 10032, 'frac_recorded': 0.4115829346092504}
+[D] draw 2: 308s  {'n_added': 845, 'n_true': 10029, 'frac_recorded': 0.39505434240701964}
+[D] draw 3: 452s  {'n_added': 886, 'n_true': 10070, 'frac_recorded': 0.3198609731876862}
+[D] draw 4: 266s  {'n_added': 869, 'n_true': 10053, 'frac_recorded': 0.2827016810902218}
+finished

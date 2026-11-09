@@ -1,0 +1,8 @@
+[scenario A] seed 0: 453s  anchor: 1250 cells, 378 landslide cells
+[scenario A] seed 1: 369s  anchor: 1250 cells, 384 landslide cells
+[scenario A] seed 2: 365s  anchor: 1250 cells, 62 landslide cells
+[scenario A] seed 3: 593s  anchor: 1250 cells, 144 landslide cells
+[scenario A] seed 4: 348s  anchor: 1250 cells, 154 landslide cells
+[scenario B] seed 0: 496s  anchor: 1250 cells, 378 landslide cells
+[scenario B] seed 1: 324s  anchor: 1250 cells, 384 landslide cells
+[scenario B] seed 2: 323s  anchor: 1250 cells, 62 landslide cells
