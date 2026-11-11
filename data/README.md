@@ -11,6 +11,8 @@ The MIT licence in the repository root covers the code only. The grids here are 
 | `haiti_grid.npz` | 210 m grid, same layers | Harp et al. (2016) inventory (USGS), Copernicus GLO-30, ESA WorldCover 2021, OpenStreetMap |
 | `gorkha_real_obs.npz` | Rasters of the Gnyawali, Valagussa and Zhang inventories, with coverage masks | USGS Ground Failure Database v4 (Schmitt et al., 2017) |
 
+`docs/story-data.js`, the 3D story's data, is derived from the same sources plus OpenStreetMap road lines and the inventory's polygon outlines. The same terms apply.
+
 Attribution required by the sources:
 
 - **Iburi inventory:** Zenodo record [2577300](https://zenodo.org/records/2577300), CC BY 4.0.

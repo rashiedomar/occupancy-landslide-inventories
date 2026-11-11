@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seen &amp; Unseen — Hokkaido 2018</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --ink:#111111; --mute:#4F4F4F; --faint:#8A8A8A; --line:#E4E4E4;
+    --emerald:#0E3B2E; --orange:#FF6A13; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+  #c{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+  #c.grabbing{cursor:grabbing}
+  #c.pointer{cursor:pointer}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+  .glow{position:fixed;pointer-events:none}
+  .glow.l{left:0;top:50%;width:380px;height:440px;margin-top:-220px;background:radial-gradient(ellipse 300px 190px at 0% 50%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.85) 50%,rgba(255,255,255,0) 100%)}
+  .glow.r{right:0;top:50%;width:420px;height:620px;margin-top:-310px;background:radial-gradient(ellipse 330px 280px at 100% 50%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.85) 55%,rgba(255,255,255,0) 100%)}
+  .glow.b{left:50%;bottom:0;width:1100px;height:190px;margin-left:-550px;background:radial-gradient(ellipse 480px 120px at 50% 100%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.85) 50%,rgba(255,255,255,0) 100%)}
+  .glow.t{left:0;top:0;width:460px;height:150px;background:radial-gradient(ellipse 360px 95px at 0% 0%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.8) 55%,rgba(255,255,255,0) 100%)}
+  .title{position:fixed;top:28px;left:36px;pointer-events:none}
+  .title h1{font-weight:500;font-size:22px;letter-spacing:.32em}
+  .title p{margin-top:6px;font-size:12.5px;color:var(--mute);letter-spacing:.02em}
+
+  .topright{position:fixed;top:26px;right:32px;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  .paper{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--ink);border-radius:999px;font-size:12.5px;text-decoration:none;color:var(--ink);background:#fff;transition:background .2s,color .2s}
+  .paper:hover{background:var(--ink);color:var(--bg)}
+  .tools{display:flex;gap:6px}
+  .tools button{font-size:11.5px;color:var(--mute);padding:5px 10px;border-radius:999px;border:1px solid #E2E2E2;background:#fff}
+  .tools button:hover{color:var(--ink);border-color:var(--faint)}
+
+  .steps{position:fixed;left:36px;top:50%;transform:translateY(-50%)}
+  .steps ol{list-style:none;position:relative}
+  .steps ol::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:1px;background:var(--line)}
+  .steps li button{display:flex;align-items:center;gap:14px;padding:11px 0;text-align:left;color:#9A9A9A;transition:color .3s}
+  .steps li button:hover{color:var(--mute)}
+  .steps .dot{position:relative;width:19px;height:19px;border-radius:50%;border:1px solid #D6D6D6;background:#fff;display:grid;place-items:center;font-size:0}
+  .steps .dot::after{content:"";width:7px;height:7px;border-radius:50%;background:transparent;transition:background .3s}
+  .steps .num{font-size:12px;font-variant-numeric:tabular-nums;width:18px}
+  .steps .lab{font-size:13.5px}
+  .steps li.done button{color:var(--mute)}
+  .steps li.done .dot::after{background:var(--faint)}
+  .steps li.on button{color:var(--ink);font-weight:500}
+  .steps li.on .dot{border-color:var(--ink)}
+  .steps li.on .dot::after{background:var(--orange)}
+
+  .stats{position:fixed;right:36px;top:50%;transform:translateY(-50%);width:248px}
+  .stat{padding:15px 0;border-top:1px solid var(--line)}
+    .stat:last-of-type{border-bottom:1px solid var(--line)}
+  .stat .k{font-size:12px;color:var(--mute)}
+  .stat .v{white-space:nowrap;margin-top:6px;font-size:32px;font-weight:300;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.05;transition:color .3s}
+  .stat .v.orange{color:var(--orange)}
+  .stat .v small{font-size:15px;font-weight:400;margin-left:4px;color:var(--ink)}
+  .stat .n{margin-top:5px;font-size:11px;color:var(--faint);min-height:13px}
+  .legend{margin-top:14px;display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--mute)}
+  .legend span{display:flex;align-items:center;gap:9px;transition:opacity .4s}
+  .legend i{width:10px;height:10px;border-radius:50%;flex:none}
+  .legend .lo i{background:var(--orange)}
+  .legend .lw i{background:#fff;box-shadow:0 0 0 1.5px var(--emerald)}
+  .legend .lh i{background:radial-gradient(#fff 30%,#cfd8d2);box-shadow:0 0 0 1px var(--faint)}
+  .legend .lt i{background:radial-gradient(var(--orange) 20%,#ffd2b8);}
+  .legend .off{opacity:.38}
+
+  .foot{position:fixed;left:0;right:0;bottom:26px;display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none}
+  .bar{position:relative;width:min(760px,70vw);height:22px;pointer-events:auto}
+  .bar::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.18)}
+  .bar .fill{position:absolute;left:0;top:50%;height:1px;background:var(--ink);transition:width .6s cubic-bezier(.6,0,.2,1)}
+  .bar button{position:absolute;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:var(--bg);border:1px solid var(--faint);transition:all .3s}
+  .bar button.on{background:var(--orange);border-color:var(--orange);transform:scale(1.25)}
+  .bar button.done{background:var(--ink);border-color:var(--ink)}
+  .caption{font-size:15px;max-width:min(640px,86vw);text-align:center;line-height:1.45;min-height:22px;transition:opacity .35s}
+  .navrow{display:flex;gap:10px;align-items:center;pointer-events:auto}
+  .navrow button{font-size:12px;padding:7px 14px;border-radius:999px;border:1px solid #E2E2E2;color:var(--mute);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .navrow button:hover{color:var(--ink);border-color:var(--faint)}
+  .navrow button.primary{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+  .navrow button:disabled{opacity:.35;cursor:default}
+  .hint{font-size:11.5px;color:#666;letter-spacing:.02em;text-align:center}
+  .mnote{display:none}
+
+  .badge{position:fixed;left:36px;bottom:24px;font-size:11px;color:var(--mute);z-index:1;max-width:230px;line-height:1.45;padding:8px 11px;border:1px dashed #C9C9C9;border-radius:10px;background:#fff}
+
+  .label3d{position:fixed;font-size:10.5px;font-weight:500;letter-spacing:.14em;color:var(--ink);pointer-events:none;white-space:nowrap;opacity:0;transition:opacity .5s;display:flex;align-items:center;gap:8px}
+  .label3d::before{content:none}
+
+  .card{position:fixed;right:36px;bottom:110px;width:268px;background:#fff;border-radius:14px;padding:18px 18px 14px;box-shadow:0 18px 48px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.05);border:1px solid #EDEDED;font-size:12.5px;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .25s,transform .25s}
+  .card.show{opacity:1;transform:none;pointer-events:auto}
+  .card h3{font-size:11px;letter-spacing:.14em;font-weight:500;color:var(--mute);display:flex;justify-content:space-between;align-items:center}
+  .card h3 button{font-size:16px;line-height:1;color:var(--mute);padding:2px 4px}
+  .card .big{margin:8px 0 12px;font-size:26px;font-weight:300;display:flex;align-items:baseline;gap:8px}
+  .card .big i{width:10px;height:10px;border-radius:50%;background:var(--orange);display:inline-block;transform:translateY(-3px)}
+  .card dl{display:grid;grid-template-columns:1fr auto;row-gap:7px;column-gap:10px}
+  .card dt{color:var(--mute)}
+  .card dd{text-align:right;font-variant-numeric:tabular-nums}
+  .card .rec{margin-top:12px;padding:9px 10px;border-radius:9px;background:#F5F5F5;display:flex;gap:9px;align-items:flex-start;line-height:1.4}
+  .card .rec i{width:9px;height:9px;border-radius:50%;flex:none;margin-top:3px}
+  .card .acts{margin-top:12px;display:flex;gap:8px}
+  .card .acts button{flex:1;font-size:12px;padding:8px;border-radius:999px;border:1px solid var(--line)}
+  .card .acts button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  .leader{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .45s}
+  .leader.show{opacity:1}
+  .leader line{stroke:var(--ink);stroke-width:1}
+  .leader .d{fill:var(--orange)}
+  .leader .p{fill:none;stroke:var(--orange);stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:pulse 1.8s ease-out infinite}
+  @keyframes pulse{from{transform:scale(1);opacity:.9}to{transform:scale(4.2);opacity:0}}
+  .fact{position:fixed;z-index:3;left:0;top:0;width:258px;background:#fff;border-radius:14px;padding:14px 16px 13px;box-shadow:0 16px 44px rgba(0,0,0,.10),0 2px 6px rgba(0,0,0,.05);border:1px solid #EDEDED;opacity:0;transform:translateY(6px);transition:opacity .45s,transform .45s;pointer-events:none}
+  .fact.show{opacity:1;transform:none}
+  .fact .fk{font-size:10.5px;letter-spacing:.16em;color:var(--orange);font-weight:600}
+  .fact .ft{margin-top:6px;font-size:14px;line-height:1.42}
+  .fact .ft b{font-weight:600}
+  .fact .fs{margin-top:8px;font-size:10.5px;color:#7A7A7A}
+  .loading{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);font-size:12.5px;color:var(--mute);letter-spacing:.12em;transition:opacity .6s;z-index:10}
+  .loading.gone{opacity:0;pointer-events:none}
+
+  @media (max-width:880px){
+    .fact{width:min(240px,74vw);padding:11px 13px}.fact .ft{font-size:12.5px}
+    .title{top:18px;left:18px}.title h1{font-size:16px;letter-spacing:.24em}.title p{font-size:11.5px}
+    .topright{top:72px;left:18px;right:auto;align-items:flex-start}.tools{display:none}
+    .paper{font-size:11.5px;padding:6px 12px}
+    .steps{display:none}.glow.l,.glow.r{display:none}.glow.b{width:100%;left:0;margin-left:0;height:330px;background:radial-gradient(ellipse 70% 260px at 50% 100%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.85) 55%,rgba(255,255,255,0) 100%)}
+    .stats{top:auto;bottom:212px;left:18px;right:18px;transform:none;width:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .stat{padding:8px 0;border:0!important}
+    .stat .v{font-size:20px}.stat .k{font-size:10.5px}.stat .n{display:none}
+    .legend{display:none}
+    .badge{display:none}
+    .mnote{display:inline}
+    .card{left:12px;right:12px;width:auto;bottom:12px}
+    .caption{font-size:13.5px}
+  }
+</style>
+<script src="story-data.js"></script>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<canvas id="c" aria-label="3D model of hills in Hokkaido showing landslides"></canvas>
+
+<div class="glow l"></div><div class="glow r"></div><div class="glow b"></div><div class="glow t"></div>
+<header class="title">
+  <h1>SEEN &amp; UNSEEN</h1>
+  <p>Hokkaido · 6 September 2018 · 03:07</p>
+</header>
+
+<div class="topright">
+  <a class="paper" href="https://arxiv.org/abs/2611.12437" target="_blank" rel="noopener">Read the paper · arXiv ↗</a>
+  <div class="tools">
+    <button id="btnReset" title="Reset view">↺ Reset view</button>
+    <button id="btnSpin" title="Spin the model on its turntable">▶ Turntable</button>
+  </div>
+</div>
+
+<nav class="steps" aria-label="Story steps"><ol id="stepList"></ol></nav>
+
+<aside class="stats">
+  <div class="stat"><div class="k">Landslides that happened</div><div class="v orange" id="v1">0</div><div class="n" id="n1"></div></div>
+  <div class="stat"><div class="k">Landslides on record</div><div class="v" id="v2">—</div><div class="n" id="n2"></div></div>
+  <div class="stat"><div class="k" id="k3">Model's estimated rate</div><div class="v" id="v3">—</div><div class="n" id="n3"></div></div>
+  <div class="legend">
+    <span class="lo" id="lgO"><i></i>happened</span>
+    <span class="lw" id="lgW"><i></i>recorded</span>
+    <span class="lh" id="lgH"><i></i>standard model: high risk</span>
+    <span class="lt" id="lgT"><i></i>our model: high risk</span>
+  </div>
+</aside>
+
+<svg class="leader" id="leader"><line id="lLine"/><circle class="p" id="lPulse" r="4"/><circle class="d" id="lDot" r="4"/></svg>
+<div class="fact" id="fact"><div class="fk" id="fK"></div><div class="ft" id="fT"></div><div class="fs" id="fS"></div></div>
+<div class="label3d" id="labA">WHERE LANDSLIDES HAPPEN</div>
+<div class="label3d" id="labB">WHERE THEY GET RECORDED</div>
+
+<div class="card" id="card" role="dialog" aria-label="Landslide details">
+  <h3><span id="cId">LANDSLIDE</span><button id="cClose" aria-label="Close">×</button></h3>
+  <div class="big"><i></i><span id="cArea"></span></div>
+  <dl>
+    <dt>Size</dt><dd id="cSize"></dd>
+    <dt>Slope</dt><dd id="cSlope"></dd>
+    <dt>Elevation</dt><dd id="cElev"></dd>
+    <dt>Nearest road</dt><dd id="cRoad"></dd>
+    <dt>Standard model</dt><dd id="cStd"></dd>
+    <dt>Our model</dt><dd id="cOurs"></dd>
+  </dl>
+  <div class="rec"><i id="cRecDot"></i><span id="cRec"></span></div>
+  <div class="acts"><button class="primary" id="cZoom">Zoom in</button><button id="cOut">Zoom out</button></div>
+</div>
+
+<footer class="foot">
+  <div class="caption" id="caption"></div>
+  <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+  <div class="navrow">
+    <button id="prev">← Back</button>
+    <button id="next" class="primary">Next →</button>
+  </div>
+  <div class="hint">Drag to rotate · Scroll or pinch to zoom · Click any landslide<span class="mnote"><br>Real terrain and landslides · simulated records · Roads © OpenStreetMap</span></div>
+</footer>
+
+<div class="badge"><b>Real data.</b> Terrain, landslides and roads are real (24 × 24 km). The records are simulated, and model maps appear only in held-out test blocks, as in the paper. Roads © OpenStreetMap contributors.</div>
+<div class="loading" id="loading">BUILDING TERRAIN…</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ================= constants ================= */
+const D = window.STORY_DATA; // built by real_terrain/make_story_data.py
+const N = D.nt;              // terrain grid
+const KM = D.km;             // block covers KM × KM km
+const W = 10;                // scene units across
+const M_PER_U = KM*1000/W;   // metres per scene unit
+const CELL_M = KM*1000/(N-1);
+const VEX = 4;               // vertical exaggeration
+const BASE_Y = -0.62;
+const N_SCARS = D.scars.length; // Zhang et al. (2019) landslides inside the view
+const DISPLAY = 2.1;         // scar size boost for visibility
+const COL = {
+  bg:0xFFFFFF, ink:0x1D1D1F, emerald:0x0E3B2E, orange:0xFF6A13, white:0xFFFFFF,
+};
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ================= seeded noise ================= */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const rand = mulberry32(20180906);
+const gauss = ()=>{let u=0,v=0;while(!u)u=rand();while(!v)v=rand();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+const PERM = new Uint8Array(512);
+{const p=[...Array(256).keys()];for(let i=255;i>0;i--){const j=Math.floor(rand()*(i+1));[p[i],p[j]]=[p[j],p[i]]}for(let i=0;i<512;i++)PERM[i]=p[i&255];}
+const lerp=(a,b,t)=>a+(b-a)*t, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const fade=t=>t*t*t*(t*(t*6-15)+10);
+function grad(h,x,y){const g=h&7,u=g<4?x:y,v=g<4?y:x;return((g&1)?-u:u)+((g&2)?-v:v)}
+function perlin(x,y){
+  const xi=Math.floor(x),yi=Math.floor(y),X=xi&255,Y=yi&255;x-=xi;y-=yi;
+  const u=fade(x),v=fade(y),a=PERM[X]+Y,b=PERM[X+1]+Y;
+  return lerp(lerp(grad(PERM[a],x,y),grad(PERM[b],x-1,y),u),lerp(grad(PERM[a+1],x,y-1),grad(PERM[b+1],x-1,y-1),u),v);
+}
+function fbm(x,y,o=6){let s=0,a=1,f=1,t=0;for(let i=0;i<o;i++){s+=a*perlin(x*f,y*f);t+=a;a*=.5;f*=2.03}return s/t}
+
+/* ================= terrain: Copernicus GLO-30, resampled ================= */
+const H = new Float32Array(N*N); // metres
+{const raw=Uint8Array.from(atob(D.terrain),c=>c.charCodeAt(0));const e=new Int16Array(raw.buffer);for(let k=0;k<N*N;k++)H[k]=e[k];}
+const b64u8=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const hIdx=(i,j)=>H[clamp(j,0,N-1)*N+clamp(i,0,N-1)];
+function hAt(u,v){ // bilinear, u,v in [0,1]
+  const x=clamp(u,0,1)*(N-1),y=clamp(v,0,1)*(N-1),i=Math.floor(x),j=Math.floor(y),fx=x-i,fy=y-j;
+  return lerp(lerp(hIdx(i,j),hIdx(i+1,j),fx),lerp(hIdx(i,j+1),hIdx(i+1,j+1),fx),fy);
+}
+function gradAt(u,v){ // dh/dx, dh/dz in m/m
+  const e=1/(N-1);
+  return [(hAt(u+e,v)-hAt(u-e,v))/(2*CELL_M),(hAt(u,v+e)-hAt(u,v-e))/(2*CELL_M)];
+}
+const toX=u=>(u-.5)*W, toZ=v=>(v-.5)*W, toY=h=>h/M_PER_U*VEX;
+const slopeDegAt=(u,v)=>{const[g,k]=gradAt(u,v);return Math.atan(Math.hypot(g,k))*180/Math.PI};
+
+/* ================= roads: OpenStreetMap, motorway to tertiary, clipped to the block ================= */
+const ROADS=[];
+for(const path of D.roads){let run=[];
+  for(const p of path){if(p[0]>=0&&p[0]<=1&&p[1]>=0&&p[1]<=1)run.push(p);else{if(run.length>1)ROADS.push(run);run=[]}}
+  if(run.length>1)ROADS.push(run)}
+const plen=p=>{let s=0;for(let m=1;m<p.length;m++)s+=Math.hypot(p[m][0]-p[m-1][0],p[m][1]-p[m-1][1]);return s};
+ROADS.sort((a,b)=>plen(b)-plen(a));
+
+/* ================= landslides: Zhang et al. (2019) inventory ================= */
+const EPI=D.epi;
+const scars=D.scars.map(([u,v,area,elong,road,rec,ps,po],n)=>{
+  const len=Math.sqrt(area*elong),wid=area/len;
+  return{id:n+1,u,v,area,len,wid,slope:slopeDegAt(u,v),elev:hAt(u,v),road,recorded:rec===1,ps,po,
+    epi:Math.hypot(u-EPI[0],v-EPI[1])+rand()*.04};
+});
+const nRecorded=scars.filter(s=>s.recorded).length;
+
+/* model maps from the paper (draw 0, scenario A): risk percentile in held-out test blocks, 0 = not scored */
+const HG=D.hg;
+function heatGrid(b64){const raw=b64u8(b64),g=new Float32Array(HG*HG);for(let k=0;k<g.length;k++)g[k]=raw[k]?Math.pow((raw[k]-1)/254,2.5):0;return g}
+const heatStd=heatGrid(D.heatStd);
+const heatOurs=heatGrid(D.heatOurs);
+const gridAt=(g,u,v)=>g[Math.round(clamp(v,0,1)*(HG-1))*HG+Math.round(clamp(u,0,1)*(HG-1))];
+
+/* ================= renderer / scene ================= */
+const canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(30,1,.02,200);
+const HOME_TGT=new THREE.Vector3(0,.1,0), HOME_POS=new THREE.Vector3(15.5,13.5,19.5);
+
+camera.position.copy(HOME_POS);
+const controls=new OrbitControls(camera,canvas);
+controls.target.copy(HOME_TGT);controls.enableDamping=true;controls.dampingFactor=.07;
+controls.minDistance=.9;controls.maxDistance=42;controls.maxPolarAngle=Math.PI*.53;
+controls.autoRotate=false;controls.autoRotateSpeed=.6;controls.zoomSpeed=1.1;
+
+const hemi=new THREE.HemisphereLight(0xffffff,0xdedede,1.15);scene.add(hemi);
+const sun=new THREE.DirectionalLight(0xffffff,2.6);sun.position.set(-9,14,7);sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-10,right:10,top:10,bottom:-10,near:1,far:50});
+sun.shadow.bias=-.0004;sun.shadow.normalBias=.02;scene.add(sun);
+
+const world=new THREE.Group();scene.add(world);
+
+/* top surface */
+function topGeometry(){
+  const g=new THREE.BufferGeometry(),pos=new Float32Array(N*N*3),uv=new Float32Array(N*N*2),col=new Float32Array(N*N*3);
+  const cFloor=new THREE.Color(0x3E7A5C),cLow=new THREE.Color(0x1A5A43),cHigh=new THREE.Color(0x0E3B2E),c=new THREE.Color();
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){
+    const k=j*N+i,u=i/(N-1),v=j/(N-1),h=H[k];
+    pos.set([toX(u),toY(h),toZ(v)],k*3);uv.set([u,1-v],k*2);
+    const s=slopeDegAt(u,v),t=clamp((h-60)/380,0,1);
+    c.copy(cLow).lerp(cHigh,t);
+    if(s<4)c.lerp(cFloor,clamp((4-s)/3,0,1)*.85);
+    const n=fbm(u*40,v*40,2)*.02;c.offsetHSL(0,0,n);
+    col.set([c.r,c.g,c.b],k*3);
+  }
+  const idx=new Uint32Array((N-1)*(N-1)*6);let p=0;
+  for(let j=0;j<N-1;j++)for(let i=0;i<N-1;i++){const a=j*N+i,b=a+1,d=a+N,e=d+1;idx.set([a,d,b,b,d,e],p);p+=6}
+  g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('uv',new THREE.BufferAttribute(uv,2));
+  g.setAttribute('color',new THREE.BufferAttribute(col,3));g.setIndex(new THREE.BufferAttribute(idx,1));g.computeVertexNormals();
+  return g;
+}
+const topGeo=topGeometry();
+const topMat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.92,metalness:0});
+const CONTOUR_U=toY(25); // 25 m contour interval, in scene units
+topMat.onBeforeCompile=sh=>{
+  sh.uniforms.uContour={value:CONTOUR_U};
+  sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nvarying float vH;').replace('#include <begin_vertex>','#include <begin_vertex>\nvH=position.y;');
+  sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying float vH;uniform float uContour;')
+    .replace('#include <color_fragment>',`#include <color_fragment>
+      float cq=vH/uContour; float fw=fwidth(cq); float ln=1.0-smoothstep(0.0,fw*1.2,abs(fract(cq-0.5)-0.5));
+      diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*1.35+0.03,ln*0.32*clamp(1.6-fw*6.0,0.0,1.0));`);
+};
+const top=new THREE.Mesh(topGeo,topMat);top.castShadow=true;top.receiveShadow=true;world.add(top);
+
+/* side walls with strata (pale pumice band = the layer that failed at Iburi) */
+const BANDS=[[0,.035,0x3B2F24],[.036,.07,0xE6D49A],[.071,.2,0x9C8870],[.205,.42,0x6F5F4F],[.425,9,0xB0A595]];
+function wallGeometry(side){
+  const pos=[],col=[],nor=[],idx=[];const c=new THREE.Color();
+  const normal={s:[0,0,1],n:[0,0,-1],e:[1,0,0],w:[-1,0,0]}[side];
+  const pts=[];for(let t=0;t<N;t++){let i,j;if(side==='s'){i=t;j=N-1}else if(side==='n'){i=N-1-t;j=0}else if(side==='e'){i=N-1;j=N-1-t}else{i=0;j=t}pts.push([i,j])}
+  const cols=[];
+  for(const[i,j]of pts){
+    const u=i/(N-1),v=j/(N-1),y0=toY(H[j*N+i]),x=toX(u),z=toZ(v),start=pos.length/3,rows=[];
+    for(const[d0,d1,hex]of BANDS){const ya=Math.max(y0-d0,BASE_Y),yb=Math.max(y0-d1,BASE_Y);c.setHex(hex);
+      rows.push(pos.length/3);pos.push(x,ya,z);col.push(c.r,c.g,c.b);nor.push(...normal);
+      rows.push(pos.length/3);pos.push(x,yb,z);col.push(c.r,c.g,c.b);nor.push(...normal)}
+    cols.push(rows);
+  }
+  for(let t=0;t<cols.length-1;t++)for(let r=0;r<cols[t].length;r+=2){const a=cols[t][r],b=cols[t][r+1],c2=cols[t+1][r],d=cols[t+1][r+1];idx.push(a,b,c2,c2,b,d)}
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('color',new THREE.Float32BufferAttribute(col,3));
+  g.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));g.setIndex(idx);return g;
+}
+const wallMat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,side:THREE.DoubleSide});
+for(const s of['s','n','e','w']){const m=new THREE.Mesh(wallGeometry(s),wallMat);m.castShadow=true;m.receiveShadow=true;world.add(m)}
+const bottom=new THREE.Mesh(new THREE.PlaneGeometry(W,W),new THREE.MeshStandardMaterial({color:0xB0A595,side:THREE.DoubleSide}));
+bottom.rotation.x=-Math.PI/2;bottom.position.y=BASE_Y;world.add(bottom);
+
+/* turntable */
+const disc=new THREE.Mesh(new THREE.CylinderGeometry(7.5,7.5,.12,160),new THREE.MeshStandardMaterial({color:0xF1F1F1,roughness:.95}));
+disc.position.y=BASE_Y-.07;disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(60,60),new THREE.ShadowMaterial({opacity:.07}));
+ground.rotation.x=-Math.PI/2;ground.position.y=BASE_Y-.14;ground.receiveShadow=true;scene.add(ground);
+
+/* heat overlays (canvas textures draped on the terrain) */
+function heatTexture(grid,rgb,alphaMax){
+  const cv=document.createElement('canvas');cv.width=cv.height=HG;const ctx=cv.getContext('2d'),img=ctx.createImageData(HG,HG);
+  for(let k=0;k<HG*HG;k++){img.data[k*4]=rgb[0];img.data[k*4+1]=rgb[1];img.data[k*4+2]=rgb[2];img.data[k*4+3]=Math.round(clamp(grid[k],0,1)*alphaMax*255)}
+  ctx.putImageData(img,0,0);const t=new THREE.CanvasTexture(cv);t.colorSpace=THREE.SRGBColorSpace;t.minFilter=THREE.LinearFilter;t.magFilter=THREE.LinearFilter;return t;
+}
+function overlay(tex){const m=new THREE.MeshBasicMaterial({map:tex,transparent:true,opacity:0,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
+  const o=new THREE.Mesh(topGeo,m);o.renderOrder=2;o.visible=false;world.add(o);return o}
+const ovStd=overlay(heatTexture(heatStd,[255,255,255],.9));
+const ovOurs=overlay(heatTexture(heatOurs,[255,106,19],.8));
+
+/* roads draped on terrain */
+const roadMat=new THREE.MeshBasicMaterial({color:COL.white,transparent:true,opacity:0});
+const roadGroup=new THREE.Group();world.add(roadGroup);
+for(const path of ROADS){
+  const pts=path.map(([u,v])=>new THREE.Vector3(toX(u),toY(hAt(u,v))+.012,toZ(v)));
+  const curve=new THREE.CatmullRomCurve3(pts);
+  const rm=new THREE.Mesh(new THREE.TubeGeometry(curve,Math.max(4,pts.length*3),.011,5,false),roadMat);roadGroup.add(rm);
+}
+roadGroup.visible=false;
+
+/* height texture so decals follow the ground exactly */
+const hTexData=new Float32Array(N*N);for(let k=0;k<N*N;k++)hTexData[k]=toY(H[k]);
+const hTex=new THREE.DataTexture(hTexData,N,N,THREE.RedFormat,THREE.FloatType);hTex.needsUpdate=true;
+function drape(mat,lift){
+  mat.onBeforeCompile=sh=>{
+    sh.uniforms.uH={value:hTex};sh.uniforms.uW={value:W};sh.uniforms.uLift={value:lift};
+    sh.vertexShader=sh.vertexShader.replace('#include <common>',`#include <common>
+      uniform sampler2D uH;uniform float uW;uniform float uLift;
+      float hAtW(vec2 p){vec2 g=clamp((p/uW+0.5)*${(N-1).toFixed(1)},vec2(0.0),vec2(${(N-1).toFixed(1)}));ivec2 i=ivec2(floor(g));vec2 f=g-vec2(i);
+        ivec2 m=ivec2(${N-1});float a=texelFetch(uH,min(i,m),0).r,b=texelFetch(uH,min(i+ivec2(1,0),m),0).r,c=texelFetch(uH,min(i+ivec2(0,1),m),0).r,d=texelFetch(uH,min(i+ivec2(1,1),m),0).r;
+        return mix(mix(a,b,f.x),mix(c,d,f.x),f.y);}`)
+      .replace('#include <project_vertex>',`vec4 wp=vec4(transformed,1.0);
+      #ifdef USE_INSTANCING
+        wp=instanceMatrix*wp;
+      #endif
+      wp.y=hAtW(wp.xz)+uLift;
+      vec4 mvPosition=modelViewMatrix*wp;gl_Position=projectionMatrix*mvPosition;`);
+  };
+}
+/* landslide scars as instanced ellipses lying on the slope */
+const scarGeo=new THREE.RingGeometry(0,.5,24,5);scarGeo.rotateX(-Math.PI/2);
+const scarMat=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.85,polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3});
+drape(scarMat,.0035);
+const scarMesh=new THREE.InstancedMesh(scarGeo,scarMat,scars.length);scarMesh.renderOrder=3;world.add(scarMesh);
+const scarFrames=scars.map(s=>{
+  const[gx,gz]=gradAt(s.u,s.v),gl=Math.hypot(gx,gz);
+  const n=new THREE.Vector3(-VEX*gx,1,-VEX*gz).normalize();
+  let dx,dz;if(gl<1e-5){const a=rand()*Math.PI*2;dx=Math.cos(a);dz=Math.sin(a)}else{dx=-gx/gl;dz=-gz/gl}
+  const t=new THREE.Vector3(dx,-VEX*gl,dz).normalize(),b=new THREE.Vector3().crossVectors(n,t).normalize();
+  const p=new THREE.Vector3(toX(s.u),toY(s.elev),toZ(s.v)).addScaledVector(n,.004);
+  return{n,t,b,p,w:s.wid/M_PER_U*DISPLAY,l:s.len/M_PER_U*DISPLAY};
+});
+const tmpM=new THREE.Matrix4(),vx=new THREE.Vector3(),vy=new THREE.Vector3(),vz=new THREE.Vector3();
+function setScarMatrix(i,sc){const f=scarFrames[i],q=Math.max(sc,1e-4);
+  vx.copy(f.b).multiplyScalar(f.w*q);vy.copy(f.n).multiplyScalar(q);vz.copy(f.t).multiplyScalar(f.l*q);
+  tmpM.makeBasis(vx,vy,vz).setPosition(f.p);scarMesh.setMatrixAt(i,tmpM)}
+const scarScale=new Float32Array(scars.length);
+const scarColor=scars.map(()=>new THREE.Color(COL.orange));
+const fadedColor=new THREE.Color(0x2C6A50);
+for(let i=0;i<scars.length;i++){setScarMatrix(i,0);scarMesh.setColorAt(i,scarColor[i])}
+scarMesh.instanceMatrix.needsUpdate=true;scarMesh.instanceColor.needsUpdate=true;
+
+/* glass layer: "where they get recorded" */
+const glass=new THREE.Group();scene.add(glass);glass.visible=false;
+const glassSlab=new THREE.Mesh(new THREE.BoxGeometry(W,.04,W),new THREE.MeshStandardMaterial({color:COL.emerald,transparent:true,opacity:0,roughness:.35,metalness:.05}));
+glass.add(glassSlab);
+const glassEdges=new THREE.LineSegments(new THREE.EdgesGeometry(glassSlab.geometry),new THREE.LineBasicMaterial({color:COL.emerald,transparent:true,opacity:0}));glass.add(glassEdges);
+const glassRoadMat=new THREE.MeshBasicMaterial({color:COL.white,transparent:true,opacity:0});
+for(const path of ROADS){const pts=path.map(([u,v])=>new THREE.Vector3(toX(u),.026,toZ(v)));
+  glass.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),Math.max(4,pts.length*3),.012,4,false),glassRoadMat))}
+const recList=scars.filter(s=>s.recorded);
+const dotGeo=new THREE.CylinderGeometry(.034,.034,.012,14);
+const dotMat=new THREE.MeshBasicMaterial({color:COL.white,transparent:true,opacity:0});
+const dots=new THREE.InstancedMesh(dotGeo,dotMat,recList.length);
+recList.forEach((s,i)=>{tmpM.makeTranslation(toX(s.u),.03,toZ(s.v));dots.setMatrixAt(i,tmpM)});glass.add(dots);
+const guideMat=new THREE.LineBasicMaterial({color:COL.ink,transparent:true,opacity:0});
+const guideGeo=new THREE.BufferGeometry();guideGeo.setAttribute('position',new THREE.Float32BufferAttribute(new Array(24).fill(0),3));
+const guides=new THREE.LineSegments(guideGeo,guideMat);scene.add(guides);guides.visible=false;
+const cornerTop=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>{const u=(a+1)/2,v=(b+1)/2;return new THREE.Vector3(a*W/2,toY(hIdx(u*(N-1),v*(N-1))),b*W/2)});
+
+/* selection ring */
+const ring=new THREE.Mesh(new THREE.RingGeometry(.82,1,56),new THREE.MeshBasicMaterial({color:COL.ink,side:THREE.DoubleSide,depthTest:false,transparent:true}));
+ring.geometry.rotateX(-Math.PI/2);ring.renderOrder=10;ring.visible=false;world.add(ring);
+
+/* epicentre pulse: three draped rings */
+const epiMat=new THREE.MeshBasicMaterial({color:COL.orange,transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide});
+drape(epiMat,.006);
+const epiGeo=new THREE.RingGeometry(.975,1,96,1);epiGeo.rotateX(-Math.PI/2);
+const epiRings=new THREE.InstancedMesh(epiGeo,epiMat,3);epiRings.renderOrder=4;world.add(epiRings);
+const EPI_P=new THREE.Vector3(toX(EPI[0]),toY(hAt(EPI[0],EPI[1])),toZ(EPI[1]));
+const epiDot=new THREE.Mesh(new THREE.SphereGeometry(.05,20,14),new THREE.MeshBasicMaterial({color:COL.orange,transparent:true,opacity:0}));
+epiDot.position.copy(EPI_P).y+=.05;world.add(epiDot);
+
+/* camera shots + pinned facts for each step */
+const deg=Math.PI/180;
+const roadMid=(()=>{const r=ROADS[0],k=Math.min(Math.floor(r.length*.42),r.length-2),q=r[k],q2=r[Math.min(k+6,r.length-1)];return{u:q[0],v:q[1],dir:Math.atan2(q2[0]-q[0],q2[1]-q[1])}})();
+const hotStd=(()=>{let b=0,bi=0;for(let k=0;k<heatStd.length;k++)if(heatStd[k]>b){b=heatStd[k];bi=k}return{u:(bi%HG)/(HG-1),v:Math.floor(bi/HG)/(HG-1)}})();
+const hidden=(()=>{let best=null,bs=-1e9;for(const s of scars){if(s.recorded||s.road<1500||s.po<0)continue;const sc=(s.po-s.ps)*100+Math.min(s.area,2e4)/1e3;if(sc>bs){bs=sc;best=s}}return best})();
+const recShare=Math.round(nRecorded/scars.length*100);
+const med=a=>{a=a.slice().sort((x,y)=>x-y);return a[Math.floor(a.length*.5)]};
+const recD50=Math.round(med(scars.filter(s=>s.recorded).map(s=>s.road))/10)*10, missD50=Math.round(med(scars.filter(s=>!s.recorded).map(s=>s.road))/10)*10;
+const pumiceY=u=>toY(hAt(u,1))-.053;
+const SHOTS=[
+  {tgt:new THREE.Vector3(toX(.6),-.02,W/2-1.2),az:24,el:13,dist:15,
+   anchor:new THREE.Vector3(toX(.6),pumiceY(.6),W/2+.01),
+   kick:'THE GROUND',text:'These hills were blanketed in <b>4–5 m of volcanic pumice and ash</b>. That pale band is where most of the slopes gave way.',src:'Field studies of the Iburi landslides'},
+  {tgt:EPI_P.clone().multiplyScalar(.45).setY(.2),az:22,el:46,dist:26.5,anchor:EPI_P.clone().setY(EPI_P.y+.05),
+   kick:'THE EARTHQUAKE',text:'<b>Magnitude 6.6</b>, about 35 km deep. Landslides caused <b>36 of the 41 deaths</b>.',src:'Japan Meteorological Agency; Yamagishi & Yamazaki (2018)'},
+  {tgt:new THREE.Vector3(toX(roadMid.u),toY(hAt(roadMid.u,roadMid.v)),toZ(roadMid.v)),az:roadMid.dir/deg+90,el:34,dist:21.5,
+   anchor:new THREE.Vector3(toX(roadMid.u),toY(hAt(roadMid.u,roadMid.v))+.02,toZ(roadMid.v)),
+   kick:'THE RECORD',text:`In the paper's simulated record, only <b>${recShare}%</b> of these landslides are recorded. Half of those lie within <b>${recD50} m of a road</b>, against ${missD50} m for the ones missed.`,src:'Simulated records, draw 0, as in the paper\'s Fig. 3'},
+  {tgt:new THREE.Vector3(0,.15,0),az:-28,el:56,dist:29,
+   anchor:new THREE.Vector3(toX(hotStd.u),toY(hAt(hotStd.u,hotStd.v))+.03,toZ(hotStd.v)),
+   kick:'THE WRONG LESSON',text:'Trained on records like these, the comparison models predicted only <b>0.24–0.30×</b> the true number of landslides.',src:'Omar & Ugaas (2026), arXiv:2611.12437. Map: standard model, test blocks'},
+  {tgt:new THREE.Vector3(0,1.75,0),az:52,el:15,dist:37,
+   anchor:hidden?new THREE.Vector3(toX(hidden.u),toY(hidden.elev)+.02,toZ(hidden.v)):new THREE.Vector3(0,.4,0),
+   place:'left',kick:'OUR MODEL',text:`In the simulated tests it reduced road bias in <b>24 of 25</b> draws and put the landslide rate at <b>0.99×</b> the truth.${hidden?` This slide, ${(hidden.road/1000).toFixed(1)} km from a road, was never recorded, yet the model ranks its ground in the top <b>${Math.max(1,100-hidden.po)}%</b>.`:''}`,src:'Omar & Ugaas (2026). On real Nepal inventories it gave no clear gain.'},
+];
+let factStep=-1;
+function shotOffset(sh){const m=innerWidth<880?1.6:1,a=sh.az*deg,e=sh.el*deg;
+  return new THREE.Vector3(Math.cos(e)*Math.sin(a),Math.sin(e),Math.cos(e)*Math.cos(a)).multiplyScalar(sh.dist*m)}
+function goShot(i,dur=2600){const sh=SHOTS[i];flyTo(sh.tgt.clone(),shotOffset(sh),dur);factStep=i;
+  $('fK').textContent=sh.kick;$('fT').innerHTML=sh.text;$('fS').textContent=sh.src;}
+let roadStart=-1e9;
+
+/* ================= story ================= */
+const STEPS=[
+  {name:'The night', cap:'6 September 2018, 03:07. Rural Hokkaido, one day after Typhoon Jebi.'},
+  {name:'The shake', cap:'In seconds, the shaking set off thousands of landslides across these hills.'},
+  {name:'What we record', cap:'But most landslide maps only show what someone saw. Often that means near a road.'},
+  {name:'The wrong lesson', cap:'A model trained on that map can learn the wrong lesson: “landslides happen near roads.”'},
+  {name:'Separating the two', cap:'Our model separates where landslides happen from where they get recorded.'},
+];
+const stepList=document.getElementById('stepList'),bar=document.getElementById('bar');
+STEPS.forEach((s,i)=>{
+  const li=document.createElement('li');li.innerHTML=`<button><span class="dot"></span><span class="num">0${i+1}</span><span class="lab">${s.name}</span></button>`;
+  li.querySelector('button').onclick=()=>go(i);stepList.appendChild(li);
+  const b=document.createElement('button');b.style.left=(i/(STEPS.length-1)*100)+'%';b.title=s.name;b.onclick=()=>go(i);bar.appendChild(b);
+});
+const $=id=>document.getElementById(id);
+const anim={light:.35,scars:0,record:0,heatStd:0,heatOurs:0,roads:0,lift:0};
+let target={...anim};let step=-1;let waveStart=0;
+
+function setNumber(el,to,dur=1200,fmt=x=>Math.round(x).toLocaleString('en-US')){
+  const from=parseFloat((el.dataset.val||'0'));el.dataset.val=to;const t0=performance.now();
+  const tick=t=>{const k=clamp((t-t0)/dur,0,1),e=1-Math.pow(1-k,3);el.textContent=fmt(lerp(from,to,e));if(k<1)requestAnimationFrame(tick)};requestAnimationFrame(tick);
+}
+function go(i){
+  i=clamp(i,0,STEPS.length-1);if(i===step)return;const prevStep=step;step=i;
+  [...stepList.children].forEach((li,k)=>{li.className=k===i?'on':k<i?'done':''});
+  [...bar.querySelectorAll('button')].forEach((b,k)=>{b.className=k===i?'on':k<i?'done':''});
+  $('fill').style.width=(i/(STEPS.length-1)*100)+'%';
+  const cap=$('caption');cap.style.opacity=0;setTimeout(()=>{cap.textContent=STEPS[i].cap;cap.style.opacity=1},220);
+  $('prev').disabled=i===0;$('next').textContent=i===STEPS.length-1?'Start over ↺':'Next →';
+  target={light:i===0?.5:1,scars:i>=1?1:0,record:(i===2||i===3)?1:0,heatStd:i===3?1:0,heatOurs:i===4?1:0,roads:(i===2||i===3)?1:0,lift:i===4?1:0};
+  if(i>=1&&prevStep<1)waveStart=performance.now();
+  // numbers
+  if(i===0){setNumber($('v1'),0,500);$('n1').textContent='';}
+  else{setNumber($('v1'),N_SCARS,i===1&&prevStep<1?2200:600);$('n1').textContent=`in view, of ${D.nInventory.toLocaleString('en-US')} mapped (Zhang et al., 2019)`;}
+  const v2=$('v2');
+  if(i>=2){setNumber(v2,nRecorded,1400);$('n2').textContent='simulated record (paper, draw 0)';}
+  else{v2.dataset.val=0;v2.textContent='—';$('n2').textContent='';}
+  const k3=$('k3'),v3=$('v3'),n3=$('n3');
+  if(i===3){k3.textContent="Comparison models' estimated rate";v3.innerHTML='0.24–0.30<small>× truth</small>';n3.textContent='baselines, paper (all settings)';}
+  else if(i===4){k3.textContent="Our model's estimated rate";v3.innerHTML='0.99<small>× truth</small>';n3.textContent='median, paper (all settings)';}
+  else{k3.textContent="Model's estimated rate";v3.textContent='—';n3.textContent='';}
+  $('lgO').className='lo'+(i>=1?'':' off');$('lgW').className='lw'+(i>=2?'':' off');
+  $('lgH').className='lh'+(i===3?'':' off');$('lgT').className='lt'+(i===4?'':' off');
+  // camera framing
+  if(i===2&&prevStep<2)roadStart=performance.now();else if(i===2||i===3)roadStart=Math.min(roadStart,performance.now()-1e4);
+  pauseSpin();goShot(i);
+  if(i<1)hideCard();
+}
+$('next').onclick=()=>go(step===STEPS.length-1?0:step+1);
+$('prev').onclick=()=>go(step-1);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(step+1)}if(e.key==='ArrowLeft')go(step-1);if(e.key==='Escape')hideCard()});
+
+/* ================= interaction: pick & zoom ================= */
+const ray=new THREE.Raycaster(),mouse=new THREE.Vector2();let selected=-1,flight=null,idleTimer=null,spinOn=false;
+function pick(ev){
+  if(anim.scars<.5)return -1;
+  const r=canvas.getBoundingClientRect();mouse.set(((ev.clientX-r.left)/r.width)*2-1,-((ev.clientY-r.top)/r.height)*2+1);
+  ray.setFromCamera(mouse,camera);const hit=ray.intersectObject(scarMesh,false)[0];
+  if(hit)return hit.instanceId;
+  // fallback: nearest scar to the terrain hit point (helps tiny scars)
+  const th=ray.intersectObject(top,false)[0];if(!th)return -1;
+  const camD=camera.position.distanceTo(th.point),tol=.012*camD;let best=-1,bd=tol;
+  for(let i=0;i<scars.length;i++){const d=scarFrames[i].p.distanceTo(th.point);if(d<bd){bd=d;best=i}}
+  return best;
+}
+let downAt=null;
+canvas.addEventListener('pointerdown',e=>{downAt=[e.clientX,e.clientY];canvas.classList.add('grabbing');pauseSpin()});
+canvas.addEventListener('pointerup',e=>{canvas.classList.remove('grabbing');
+  if(downAt&&Math.hypot(e.clientX-downAt[0],e.clientY-downAt[1])<5){const id=pick(e);if(id>=0)select(id);else hideCard()}downAt=null;resumeSpinLater()});
+let hoverRAF=0;
+canvas.addEventListener('pointermove',e=>{if(downAt||hoverRAF)return;hoverRAF=requestAnimationFrame(()=>{hoverRAF=0;canvas.classList.toggle('pointer',pick(e)>=0)})});
+canvas.addEventListener('wheel',()=>{pauseSpin();resumeSpinLater()},{passive:true});
+function pauseSpin(){controls.autoRotate=false;clearTimeout(idleTimer)}
+function resumeSpinLater(){clearTimeout(idleTimer);idleTimer=setTimeout(()=>{if(spinOn&&selected<0)controls.autoRotate=true},7000)}
+$('btnSpin').onclick=()=>{spinOn=!spinOn;controls.autoRotate=spinOn&&selected<0;$('btnSpin').textContent=spinOn?'❚❚ Turntable':'▶ Turntable'};
+$('btnReset').onclick=()=>{hideCard();goShot(step,1600)};
+
+const fmtM=m=>m>=1000?(m/1000).toFixed(1)+' km':Math.round(m/10)*10+' m';
+const pct=p=>p<0?'Not scored (training area)':`Top ${Math.max(1,100-p)}% of test cells`;
+function select(i){
+  selected=i;const s=scars[i],f=scarFrames[i];pauseSpin();
+  $('cId').textContent=`LANDSLIDE #${String(s.id).padStart(4,'0')}`;
+  $('cArea').textContent=Math.round(s.area).toLocaleString('en-US')+' m²';
+  $('cSize').textContent=`${Math.round(s.len)} × ${Math.round(s.wid)} m`;
+  $('cSlope').textContent=s.slope.toFixed(0)+'°';$('cElev').textContent=Math.round(s.elev)+' m';
+  $('cRoad').textContent=fmtM(s.road);
+  $('cStd').textContent=pct(s.ps);$('cOurs').textContent=pct(s.po);
+  const dot=$('cRecDot');
+  if(s.recorded){dot.style.background='#fff';dot.style.boxShadow='0 0 0 1.5px #0E3B2E';$('cRec').textContent='In the simulated record.'}
+  else{dot.style.background='transparent';dot.style.boxShadow='0 0 0 1.5px #B9B2A6';$('cRec').textContent='Missed by the simulated record. It happened, but nobody recorded it.'}
+  $('card').classList.add('show');
+  ring.visible=true;const r=Math.max(f.l,f.w)*.6+.02;ring.scale.setScalar(r);
+  ring.position.copy(f.p).addScaledVector(f.n,.003);ring.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),f.n);
+}
+function hideCard(){selected=-1;$('card').classList.remove('show');ring.visible=false;resumeSpinLater()}
+$('cClose').onclick=hideCard;
+$('cZoom').onclick=()=>{if(selected<0)return;const f=scarFrames[selected];const dir=camera.position.clone().sub(controls.target).normalize();
+  dir.y=Math.max(dir.y,.45);dir.normalize();flyTo(f.p.clone(),dir.multiplyScalar(Math.max(1.1,f.l*14)))};
+$('cOut').onclick=()=>{hideCard();goShot(step,1600)};
+const toSph=v=>({r:v.length(),az:Math.atan2(v.x,v.z),el:Math.asin(clamp(v.y/v.length(),-1,1))});
+function flyTo(tgt,offset,dur=1500){
+  const a=toSph(camera.position.clone().sub(controls.target)),b=toSph(offset);
+  let daz=b.az-a.az;while(daz>Math.PI)daz-=2*Math.PI;while(daz<-Math.PI)daz+=2*Math.PI;
+  flight={t0:performance.now(),dur:reduceMotion?1:dur,fromT:controls.target.clone(),toT:tgt,a,b,daz};
+}
+
+/* ================= loop ================= */
+function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;
+  camera.fov=w<880?44:30;camera.setViewOffset(w,h,0,Math.round(h*(w<880?.03:.07)),w,h);camera.updateProjectionMatrix()}
+addEventListener('resize',resize);resize();
+
+const labA=$('labA'),labB=$('labB'),v3tmp=new THREE.Vector3();
+function placeLabel(el,pts,show,above){
+  if(!show){el.style.opacity=0;return}
+  let best=null;for(const p of pts){v3tmp.copy(p).project(camera);const x=(v3tmp.x*.5+.5)*innerWidth,y=(-v3tmp.y*.5+.5)*innerHeight;if(!best||(above?y<best[1]:y>best[1]))best=[x,y]}
+  el.style.left=best[0]+'px';el.style.top=(best[1]+(above?-30:16))+'px';el.style.transform='translateX(-50%)';el.style.opacity=show;
+}
+let last=performance.now(),epiState=0;
+const leader=$('leader'),fact=$('fact'),lLine=$('lLine'),lDot=$('lDot'),lPulse=$('lPulse');
+function placeFact(){
+  const show=factStep===step&&!flight&&selected<0;
+  if(!show){fact.classList.remove('show');leader.classList.remove('show');return}
+  v3tmp.copy(SHOTS[step].anchor).project(camera);
+  if(v3tmp.z>1){fact.classList.remove('show');leader.classList.remove('show');return}
+  const ax=(v3tmp.x*.5+.5)*innerWidth,ay=(-v3tmp.y*.5+.5)*innerHeight;
+  const fw=fact.offsetWidth,fh=fact.offsetHeight,mob=innerWidth<880;
+  const minX=mob?12:300,maxX=innerWidth-(mob?12:300)-fw;
+  let x,y,lx,ly;
+  if(SHOTS[step].place==='left'&&!mob){x=minX-40;y=clamp(ay+40,110,innerHeight-230-fh);lx=x+fw;ly=y+fh/2}
+  else{x=clamp(ax-fw/2,minX,Math.max(minX,maxX));y=ay-70-fh;let below=false;if(y<(mob?120:96)){y=ay+70;below=true}lx=clamp(ax,x+16,x+fw-16);ly=below?y:y+fh}
+  fact.style.transform='';fact.style.left=x+'px';fact.style.top=y+'px';
+  lLine.setAttribute('x1',ax);lLine.setAttribute('y1',ay);lLine.setAttribute('x2',lx);lLine.setAttribute('y2',ly);
+  for(const c of[lDot,lPulse]){c.setAttribute('cx',ax);c.setAttribute('cy',ay)}
+  fact.classList.add('show');leader.classList.add('show');
+}
+function frame(now){
+  const dt=Math.min(.1,(now-last)/1000);last=now;const k=1-Math.pow(.004,dt);
+  for(const key of Object.keys(anim)){if(key==='scars')continue;anim[key]+=(target[key]-anim[key])*k}
+  // scars: wave from the epicentre when appearing
+  const goal=target.scars;anim.scars+=(goal-anim.scars)*k;
+  const wave=(now-waveStart)/1000;let matDirty=false,colDirty=false;
+  for(let i=0;i<scars.length;i++){
+    let sc;
+    if(goal>0){const appear=clamp((wave*.55-scars[i].epi)*6,0,1);sc=reduceMotion?1:appear}
+    else sc=Math.min(scarScale[i],anim.scars);
+    if(Math.abs(sc-scarScale[i])>.001){scarScale[i]=sc;setScarMatrix(i,sc*(1+.6*Math.max(0,1-sc)*sc*4*(1-sc)));matDirty=true}
+  }
+  // colours: recorded → white, unrecorded → faded, during steps 3–4
+  const rec=anim.record;
+  if(Math.abs(rec-(frame.lastRec??-1))>.002){frame.lastRec=rec;
+    for(let i=0;i<scars.length;i++){const c=scarColor[i].setHex(COL.orange);
+      if(scars[i].recorded)c.lerp(new THREE.Color(COL.white),rec);else c.lerp(fadedColor,rec*.86);scarMesh.setColorAt(i,c)}colDirty=true}
+  if(matDirty)scarMesh.instanceMatrix.needsUpdate=true;if(colDirty)scarMesh.instanceColor.needsUpdate=true;
+  // light (night → day)
+  sun.intensity=lerp(.55,2.6,anim.light);hemi.intensity=lerp(.45,1.15,anim.light);
+  // overlays & roads
+  ovStd.visible=anim.heatStd>.01;ovStd.material.opacity=anim.heatStd;
+  ovOurs.visible=anim.heatOurs>.01;ovOurs.material.opacity=anim.heatOurs*.9;
+  roadGroup.visible=anim.roads>.01;roadMat.opacity=anim.roads;
+  {const p=clamp((now-roadStart)/2600,0,1),e=1-Math.pow(1-p,3);for(const rm of roadGroup.children){const n=rm.geometry.index.count;rm.geometry.setDrawRange(0,Math.floor(n*e/6)*6)}}
+  // epicentre pulse (step 2)
+  {const on=step===1?1:0;epiState+=(on-epiState)*k;epiRings.visible=epiDot.visible=epiState>.01;
+   if(epiRings.visible){for(let r=0;r<3;r++){const ph=((now/1000)*.45+r/3)%1,rad=.12+ph*1.7;tmpM.makeScale(rad,1,rad).setPosition(EPI_P.x,0,EPI_P.z);epiRings.setMatrixAt(r,tmpM)}
+     epiRings.instanceMatrix.needsUpdate=true;epiMat.opacity=.85*epiState;epiDot.material.opacity=epiState}}
+  // glass layer lift
+  const L=anim.lift;glass.visible=guides.visible=L>.01;
+  const gy=1.35+L*2.5;glass.position.y=gy;
+  glassSlab.material.opacity=.66*L;glassEdges.material.opacity=.5*L;glassRoadMat.opacity=L;dotMat.opacity=L;guideMat.opacity=.32*L;
+  const gp=guideGeo.attributes.position;cornerTop.forEach((c,ci)=>{gp.setXYZ(ci*2,c.x,c.y,c.z);gp.setXYZ(ci*2+1,c.x,gy-.02,c.z)});gp.needsUpdate=true;
+  // camera
+  if(flight){const t=clamp((now-flight.t0)/flight.dur,0,1),e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    const f=flight;controls.target.lerpVectors(f.fromT,f.toT,e);
+    // pull back a little mid-flight for a gentle arc
+    const r=lerp(f.a.r,f.b.r,e)*(1+.18*Math.sin(Math.PI*e)*(Math.abs(f.daz)>.6?1:.4)),az=f.a.az+f.daz*e,el=lerp(f.a.el,f.b.el,e);
+    camera.position.set(Math.cos(el)*Math.sin(az),Math.sin(el),Math.cos(el)*Math.cos(az)).multiplyScalar(r).add(controls.target);
+    if(t>=1)flight=null}
+  controls.update();
+  // labels
+  placeLabel(labA,[new THREE.Vector3(W/2,BASE_Y,W/2),new THREE.Vector3(W/2,BASE_Y,-W/2),new THREE.Vector3(-W/2,BASE_Y,W/2),new THREE.Vector3(-W/2,BASE_Y,-W/2)],L>.6&&selected<0?1:0,false);
+  placeLabel(labB,[new THREE.Vector3(W/2,gy,W/2),new THREE.Vector3(W/2,gy,-W/2),new THREE.Vector3(-W/2,gy,W/2),new THREE.Vector3(-W/2,gy,-W/2)],L>.6&&selected<0?1:0,true);
+  placeFact();
+  renderer.render(scene,camera);
+  requestAnimationFrame(frame);
+}
+go(0);
+requestAnimationFrame(t=>{last=t;frame(t);$('loading').classList.add('gone')});
+window.__story={go,select,scars,get step(){return step},nRecorded,anim,get sel(){return selected}};
+</script>
+</body>
+</html>

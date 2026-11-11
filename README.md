@@ -2,7 +2,9 @@
 
 Code, results and data grids for the preprint *Occupancy Modelling of Biased Landslide Inventories: When Does Separating Occurrence from Recording Improve on Neutralisation?*
 
-Preprint link: to be added.
+Preprint: [arXiv:2611.12437](https://arxiv.org/abs/2611.12437)
+
+**3D story:** [Seen & Unseen — Hokkaido 2018](https://rashiedomar.github.io/occupancy-landslide-inventories/), an interactive companion for non-specialists (see [The 3D story](#the-3d-story)).
 
 ## What this repository does
 
@@ -104,6 +106,23 @@ The code keeps the names used while the work was under way. Where they differ fr
 - **"Pre-registered"**, as in `q3_preregister.py`, means prespecified. The Haiti prediction carries a UTC timestamp written by the script (`written_utc`). It was not lodged with a third-party registry, and this repository's commit dates are later than the test, so they do not independently confirm the order of events.
 - **Older outputs:** `summary` files in the `results*` folders, and `summarize_claims.py`, reflect earlier stages of the analysis and may state claims more strongly than the paper does. For the published figures, use `results_rev/summary.json` and the paper.
 - **`toy_simulation/`** is an early synthetic test and is not reported in the paper. It is kept because `models.py`, used throughout, lives there.
+
+## The 3D story
+
+[`docs/`](docs/) holds *Seen & Unseen*, an interactive 3D story about the 2018 Hokkaido Eastern Iburi landslides, served with GitHub Pages. It has five steps: the ground, the earthquake, what gets recorded, what a standard model learns, and how the occupancy model separates the two. You can drag to rotate, scroll to zoom and click any landslide for its details.
+
+It shows a 24 × 24 km block with real data:
+
+- **Terrain:** Copernicus GLO-30 elevation.
+- **Landslides:** the 5,412 Zhang et al. (2019) landslides inside the block, out of 5,625 mapped.
+- **Roads:** OpenStreetMap roads, motorway to tertiary.
+- **Records and model maps:** the paper's simulated records and model maps from draw 0, scenario A, as in the paper's Fig. 3. Model maps appear only in the held-out test blocks.
+
+The soil layers drawn on the block's sides are illustrative.
+
+To run it locally, run `python3 -m http.server 8000` in `docs/` and open http://localhost:8000. It loads three.js r170 from jsDelivr and fonts from Google Fonts, so it needs an internet connection.
+
+`docs/story-data.js` is built by `real_terrain/make_story_data.py`, which needs the raw downloads.
 
 ## Data
 
