@@ -468,6 +468,8 @@ const hidden=(()=>{let best=null,bs=-1e9;for(const s of scars){if(s.recorded||s.
 const recShare=Math.round(nRecorded/scars.length*100);
 const med=a=>{a=a.slice().sort((x,y)=>x-y);return a[Math.floor(a.length*.5)]};
 const recD50=Math.round(med(scars.filter(s=>s.recorded).map(s=>s.road))/10)*10, missD50=Math.round(med(scars.filter(s=>!s.recorded).map(s=>s.road))/10)*10;
+const recC=(()=>{const r=scars.filter(s=>s.recorded);let u=0,v=0;for(const s of r){u+=s.u;v+=s.v}u/=r.length;v/=r.length;return{u:lerp(u,.5,.35),v:lerp(v,.5,.35)}})();
+const recPin=(()=>{let best=scars[0],bd=1e9;for(const s of scars){if(!s.recorded||s.road>200)continue;const d=Math.hypot(s.u-recC.u,s.v-recC.v);if(d<bd){bd=d;best=s}}return best})();
 const pumiceY=u=>toY(hAt(u,1))-.053;
 const SHOTS=[
   {tgt:new THREE.Vector3(toX(.6),-.02,W/2-1.2),az:24,el:13,dist:15,
@@ -475,8 +477,8 @@ const SHOTS=[
    kick:'THE GROUND',text:'These hills were blanketed in <b>4–5 m of volcanic pumice and ash</b>. That pale band is where most of the slopes gave way.',src:'Field studies of the Iburi landslides'},
   {tgt:EPI_P.clone().multiplyScalar(.45).setY(.2),az:22,el:46,dist:26.5,anchor:EPI_P.clone().setY(EPI_P.y+.05),
    kick:'THE EARTHQUAKE',text:'<b>Magnitude 6.6</b>, about 35 km deep. Landslides caused <b>36 of the 41 deaths</b>.',src:'Japan Meteorological Agency; Yamagishi & Yamazaki (2018)'},
-  {tgt:new THREE.Vector3(toX(roadMid.u),toY(hAt(roadMid.u,roadMid.v)),toZ(roadMid.v)),az:roadMid.dir/deg+90,el:34,dist:21.5,
-   anchor:new THREE.Vector3(toX(roadMid.u),toY(hAt(roadMid.u,roadMid.v))+.02,toZ(roadMid.v)),
+  {tgt:new THREE.Vector3(toX(recC.u),toY(hAt(recC.u,recC.v)),toZ(recC.v)),az:18,el:40,dist:28.5,
+   anchor:new THREE.Vector3(toX(recPin.u),toY(recPin.elev)+.02,toZ(recPin.v)),
    kick:'THE RECORD',text:`In the paper's simulated record, only <b>${recShare}%</b> of these landslides are recorded. Half of those lie within <b>${recD50} m of a road</b>, against ${missD50} m for the ones missed.`,src:'Simulated records, draw 0, as in the paper\'s Fig. 3'},
   {tgt:new THREE.Vector3(0,.15,0),az:-28,el:56,dist:29,
    anchor:new THREE.Vector3(toX(hotStd.u),toY(hAt(hotStd.u,hotStd.v))+.03,toZ(hotStd.v)),
